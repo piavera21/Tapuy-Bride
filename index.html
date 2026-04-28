@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tapuy Bride — Your AI Wedding Planner</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/supabase/2.39.3/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -733,7 +733,7 @@
 // ── SUPABASE INIT ──
 const SUPABASE_URL = 'https://pbvfmzetvaixgwguyeyz.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBidmZtemV0dmFpeGd3Z3V5ZXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNDE1MTgsImV4cCI6MjA5MjkxNzUxOH0.A0MNcrFvbzYTJsVZyhpB1gZVsY29f9ywvSvnovgI-fc';
-const { createClient } = supabase;
+const { createClient } = window.supabase || supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
@@ -794,12 +794,24 @@ async function handleSignup() {
   const email = document.getElementById('signupEmail').value.trim();
   const password = document.getElementById('signupPassword').value;
   const msg = document.getElementById('signupMsg');
+  msg.style.display = 'block';
   if (!name || !email || !password) { showMsg(msg, 'Please fill in all fields.', 'error'); return; }
-  const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name: name } } });
-  if (error) { showMsg(msg, error.message, 'error'); return; }
-  currentUser = data.user;
-  showMsg(msg, 'Account created! Setting up your profile...', 'success');
-  setTimeout(async () => { await loadProfile(); }, 1000);
+  if (password.length < 6) { showMsg(msg, 'Password must be at least 6 characters.', 'error'); return; }
+  showMsg(msg, 'Creating your account...', 'success');
+  try {
+    const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name: name } } });
+    console.log('Signup response:', JSON.stringify(data), JSON.stringify(error));
+    if (error) { showMsg(msg, 'Error: ' + error.message, 'error'); return; }
+    if (data.user && data.user.id) {
+      currentUser = data.user;
+      showMsg(msg, 'Account created! Loading your planner...', 'success');
+      setTimeout(async () => { await loadProfile(); }, 1200);
+    } else {
+      showMsg(msg, 'Check your email to confirm your account, then sign in below.', 'success');
+    }
+  } catch(e) {
+    showMsg(msg, 'Error: ' + e.message, 'error');
+  }
 }
 
 async function handleLogout() {
