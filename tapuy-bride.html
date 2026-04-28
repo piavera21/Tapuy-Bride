@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tapuy Bride — Your AI Wedding Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #F2C4B2;
+    --rose: #C97B63;
+    --deep: #2B1A14;
+    --cream: #FDF6EF;
+    --gold: #C9A84C;
+    --soft: #F7EDE5;
+    --muted: #8C6B5E;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(253,246,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,123,99,0.15);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--deep);
+  }
+  .logo span { color: var(--rose); font-style: italic; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 400; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--deep); color: var(--cream) !important;
+    padding: 10px 22px; border-radius: 2px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--rose); color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 48px 80px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500; margin-bottom: 28px;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--rose);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    margin-bottom: 28px; color: var(--deep);
+  }
+  .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero p {
+    font-size: 1.05rem; line-height: 1.75; color: var(--muted);
+    max-width: 440px; margin-bottom: 44px; font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--deep); color: var(--cream);
+    padding: 16px 36px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    border-radius: 2px; transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--deep);
+    padding: 16px 36px; border: 1.5px solid var(--deep); cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+    border-radius: 2px; transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid rgba(201,123,99,0.2);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--deep); display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 400;
+  }
+
+  .hero-right {
+    position: relative; background: var(--soft);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-img-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #F2C4B2 0%, #E8A898 40%, #C97B63 100%);
+    opacity: 0.35;
+  }
+  .hero-card-float {
+    position: relative; z-index: 2;
+    background: var(--white); border-radius: 4px;
+    padding: 32px; width: 340px;
+    box-shadow: 0 32px 80px rgba(43,26,20,0.15);
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+  }
+  .card-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; }
+  .card-sub { font-size: 0.75rem; color: var(--muted); }
+  .card-progress-label {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .progress-bar {
+    height: 6px; background: var(--soft); border-radius: 10px; margin-bottom: 20px;
+  }
+  .progress-fill {
+    height: 100%; border-radius: 10px;
+    background: linear-gradient(90deg, var(--blush), var(--rose));
+    width: 68%; transition: width 1s ease;
+  }
+  .card-tasks { display: flex; flex-direction: column; gap: 10px; }
+  .task {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 14px; border-radius: 4px; background: var(--soft);
+    font-size: 0.82rem;
+  }
+  .task.done { opacity: 0.6; }
+  .task-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1.5px solid var(--rose); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: var(--rose);
+  }
+  .task.done .task-check { background: var(--rose); color: white; border-color: var(--rose); }
+  .card-badge {
+    position: absolute; top: -16px; right: -16px;
+    background: var(--gold); color: var(--white);
+    padding: 8px 14px; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--blush); max-width: 60px; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300;
+    line-height: 1.1; margin: 16px 0 20px;
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 520px; }
+
+  /* ── TOOLS SECTION ── */
+  .tools { padding: 120px 80px; }
+  .tools-header { text-align: center; margin-bottom: 72px; }
+  .tools-header .section-label { justify-content: center; }
+  .tools-header .section-label::after { display: none; }
+  .tools-header .section-sub { margin: 0 auto; }
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    background: rgba(201,123,99,0.1);
+  }
+  .tool-card {
+    background: var(--cream); padding: 44px 36px;
+    transition: all 0.3s; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .tool-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--blush), var(--rose));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .tool-card:hover::before { transform: scaleX(1); }
+  .tool-card:hover { background: var(--white); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(43,26,20,0.08); z-index: 1; }
+  .tool-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--soft); display: flex; align-items: center;
+    justify-content: center; font-size: 1.5rem; margin-bottom: 24px;
+  }
+  .tool-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; color: var(--blush); font-weight: 500;
+    letter-spacing: 0.1em; margin-bottom: 10px;
+  }
+  .tool-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; color: var(--deep);
+  }
+  .tool-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  /* ── HOW IT WORKS ── */
+  .how { padding: 120px 80px; background: var(--deep); color: var(--cream); }
+  .how-header { margin-bottom: 80px; }
+  .how-header .section-label { color: var(--blush); }
+  .how-header .section-label::after { background: rgba(242,196,178,0.3); }
+  .how-header .section-title { color: var(--cream); }
+  .how-header .section-sub { color: rgba(253,246,239,0.6); }
+  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .step {
+    padding: 40px 28px; border-left: 1px solid rgba(242,196,178,0.15);
+    position: relative;
+  }
+  .step:first-child { border-left: none; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300; color: rgba(242,196,178,0.2);
+    line-height: 1; margin-bottom: 20px;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 500; margin-bottom: 12px; color: var(--blush);
+  }
+  .step-desc { font-size: 0.86rem; color: rgba(253,246,239,0.55); line-height: 1.7; font-weight: 300; }
+
+  /* ── PRICING ── */
+  .pricing { padding: 120px 80px; }
+  .pricing-header { text-align: center; margin-bottom: 72px; }
+  .pricing-header .section-label { justify-content: center; }
+  .pricing-header .section-label::after { display: none; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .price-card {
+    border: 1.5px solid rgba(201,123,99,0.2); border-radius: 4px;
+    padding: 44px 36px; transition: all 0.3s; position: relative;
+  }
+  .price-card.featured {
+    background: var(--deep); color: var(--cream);
+    border-color: var(--deep); transform: scale(1.04);
+  }
+  .price-card:not(.featured):hover { border-color: var(--rose); transform: translateY(-4px); }
+  .price-tier {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); margin-bottom: 20px; font-weight: 500;
+  }
+  .price-card.featured .price-tier { color: var(--blush); }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--deep); line-height: 1;
+  }
+  .price-card.featured .price-amount { color: var(--cream); }
+  .price-period { font-size: 0.8rem; color: var(--muted); margin-bottom: 32px; }
+  .price-card.featured .price-period { color: rgba(253,246,239,0.5); }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+  .price-features li {
+    font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 10px;
+  }
+  .price-card.featured .price-features li { color: rgba(253,246,239,0.7); }
+  .price-features li::before { content: '✦'; color: var(--rose); font-size: 0.6rem; flex-shrink: 0; }
+  .price-card.featured .price-features li::before { color: var(--blush); }
+  .price-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: white; padding: 4px 16px;
+    border-radius: 20px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; white-space: nowrap;
+  }
+  .btn-price-light {
+    width: 100%; padding: 14px; background: var(--cream); color: var(--deep);
+    border: 1.5px solid var(--deep); border-radius: 2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.3s;
+  }
+  .btn-price-light:hover { background: var(--deep); color: var(--cream); }
+  .btn-price-dark {
+    width: 100%; padding: 14px; background: var(--rose); color: white;
+    border: none; border-radius: 2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; transition: all 0.3s;
+  }
+  .btn-price-dark:hover { background: var(--blush); color: var(--deep); }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial { padding: 100px 80px; background: var(--soft); }
+  .testimonial-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; color: var(--blush); line-height: 0.5;
+    margin-bottom: 28px; display: block;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem; font-weight: 300; font-style: italic;
+    line-height: 1.5; color: var(--deep); margin-bottom: 32px;
+  }
+  .quote-author { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .quote-stars { color: var(--gold); letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 20px; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    padding: 100px 80px;
+    background: linear-gradient(135deg, var(--deep) 0%, #3D2419 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: 'TAPUY BRIDE';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18vw; font-weight: 600; color: rgba(242,196,178,0.04);
+    white-space: nowrap; pointer-events: none;
+  }
+  .cta-banner .section-label { justify-content: center; color: var(--blush); margin-bottom: 24px; }
+  .cta-banner .section-label::after { display: none; }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300;
+    color: var(--cream); line-height: 1.1; margin-bottom: 20px;
+  }
+  .cta-title em { font-style: italic; color: var(--blush); }
+  .cta-sub { font-size: 1rem; color: rgba(253,246,239,0.5); margin-bottom: 44px; font-weight: 300; }
+  .cta-input-row {
+    display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto;
+  }
+  .cta-input {
+    flex: 1; padding: 16px 20px; background: rgba(253,246,239,0.08);
+    border: 1px solid rgba(242,196,178,0.25); border-radius: 2px; color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+  }
+  .cta-input::placeholder { color: rgba(253,246,239,0.3); }
+  .cta-input:focus { border-color: var(--blush); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 80px; border-top: 1px solid rgba(201,123,99,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; color: var(--deep);
+  }
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 0.78rem; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--rose); }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── DASHBOARD PREVIEW (popup) ── */
+  .dashboard-overlay {
+    position: fixed; inset: 0; background: rgba(43,26,20,0.7);
+    backdrop-filter: blur(8px); z-index: 200;
+    display: none; align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .dashboard-overlay.open { display: flex; }
+  .dashboard {
+    background: var(--cream); border-radius: 8px; width: 100%; max-width: 900px;
+    max-height: 85vh; overflow-y: auto;
+    box-shadow: 0 40px 120px rgba(43,26,20,0.3);
+    animation: slideUp 0.4s ease;
+  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .dashboard-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 28px; border-bottom: 1px solid rgba(201,123,99,0.15);
+    position: sticky; top: 0; background: var(--cream); z-index: 1;
+  }
+  .dashboard-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; }
+  .dashboard-logo span { color: var(--rose); font-style: italic; }
+  .close-btn {
+    width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(201,123,99,0.3);
+    background: none; cursor: pointer; font-size: 1rem; color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .close-btn:hover { background: var(--rose); color: white; border-color: var(--rose); }
+  .dashboard-body { display: grid; grid-template-columns: 220px 1fr; min-height: 500px; }
+  .dash-sidebar {
+    padding: 28px 20px; border-right: 1px solid rgba(201,123,99,0.12);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .dash-greeting {
+    padding: 0 8px 20px; border-bottom: 1px solid rgba(201,123,99,0.12); margin-bottom: 12px;
+  }
+  .dash-greeting p { font-size: 0.75rem; color: var(--muted); }
+  .dash-greeting strong { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; display: block; }
+  .dash-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 4px; cursor: pointer;
+    font-size: 0.82rem; color: var(--muted); transition: all 0.2s;
+  }
+  .dash-item:hover, .dash-item.active { background: var(--soft); color: var(--deep); }
+  .dash-item.active { font-weight: 500; }
+  .dash-icon { font-size: 1rem; width: 20px; text-align: center; }
+  .dash-main { padding: 32px; }
+  .dash-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+  .dash-section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 500; }
+  .countdown-pill {
+    background: var(--soft); padding: 8px 16px; border-radius: 20px;
+    font-size: 0.8rem; color: var(--rose); font-weight: 500;
+  }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .dash-card {
+    background: var(--white); border-radius: 6px; padding: 20px;
+    border: 1px solid rgba(201,123,99,0.1);
+  }
+  .dash-card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+  .dash-card-val { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--deep); }
+  .dash-card-sub { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+  .budget-bar { margin-top: 10px; height: 6px; background: var(--soft); border-radius: 10px; }
+  .budget-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--blush), var(--rose)); width: 42%; }
+  .checklist-section { background: var(--white); border-radius: 6px; padding: 20px; border: 1px solid rgba(201,123,99,0.1); }
+  .checklist-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .checklist-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; }
+  .checklist-badge { background: var(--soft); padding: 3px 10px; border-radius: 10px; font-size: 0.72rem; color: var(--rose); }
+  .check-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid rgba(201,123,99,0.08); font-size: 0.84rem;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 18px; height: 18px; border-radius: 4px;
+    border: 1.5px solid var(--blush); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s; font-size: 0.65rem;
+  }
+  .check-box.checked { background: var(--rose); border-color: var(--rose); color: white; }
+  .check-text { flex: 1; }
+  .check-text.done { text-decoration: line-through; color: var(--muted); }
+  .check-due { font-size: 0.72rem; color: var(--muted); }
+  .ai-chat {
+    margin-top: 20px; background: var(--deep); border-radius: 6px; padding: 20px;
+  }
+  .ai-chat-title { color: var(--blush); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+  .ai-message {
+    background: rgba(242,196,178,0.12); border-radius: 4px;
+    padding: 12px 14px; font-size: 0.82rem; color: rgba(253,246,239,0.8);
+    line-height: 1.6; margin-bottom: 12px;
+  }
+  .ai-input-row { display: flex; gap: 8px; }
+  .ai-input {
+    flex: 1; background: rgba(253,246,239,0.08); border: 1px solid rgba(242,196,178,0.2);
+    border-radius: 4px; padding: 10px 14px; color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none;
+  }
+  .ai-input::placeholder { color: rgba(253,246,239,0.3); }
+  .ai-send {
+    background: var(--rose); border: none; color: white; padding: 10px 16px;
+    border-radius: 4px; cursor: pointer; font-size: 0.82rem; transition: background 0.2s;
+  }
+  .ai-send:hover { background: var(--blush); color: var(--deep); }
+
+  /* animations */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+    .tools { padding: 80px 24px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .how { padding: 80px 24px; }
+    .how-steps { grid-template-columns: 1fr 1fr; }
+    .pricing { padding: 80px 24px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
+    .price-card.featured { transform: scale(1); }
+    .testimonial { padding: 80px 24px; }
+    .cta-banner { padding: 80px 24px; }
+    footer { padding: 40px 24px; flex-direction: column; gap: 20px; text-align: center; }
+    .dashboard-body { grid-template-columns: 1fr; }
+    .dash-sidebar { display: none; }
+    .dash-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Tapuy <span>Bride</span></div>
+  <div class="nav-links">
+    <a href="#tools">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#" class="nav-cta" onclick="openDashboard()">Try the App</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Your AI Wedding Planner</div>
+    <h1>Plan your dream wedding <em>without</em> the planner price tag</h1>
+    <p>Tapuy Bride is the all-in-one AI powered app that guides you from "Yes!" to "I Do" — covering budget, vendors, beauty, content, and everything in between.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openDashboard()">Start Planning Free</button>
+      <button class="btn-outline" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">See All Features</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">$6K+</span>
+        <span class="stat-label">Saved vs. Planner</span>
+      </div>
+      <div>
+        <span class="stat-num">10</span>
+        <span class="stat-label">Core Tools</span>
+      </div>
+      <div>
+        <span class="stat-num">24/7</span>
+        <span class="stat-label">AI Support</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-bg"></div>
+    <div class="hero-card-float">
+      <div class="card-badge">✦ 247 days to go</div>
+      <div class="card-header">
+        <div class="card-avatar">👰</div>
+        <div>
+          <div class="card-title">Sofia's Wedding</div>
+          <div class="card-sub">June 14, 2026 · Miami, FL</div>
+        </div>
+      </div>
+      <div class="card-progress-label">Planning Progress · 68%</div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="card-tasks">
+        <div class="task done">
+          <div class="task-check">✓</div>
+          Book venue deposit
+        </div>
+        <div class="task done">
+          <div class="task-check">✓</div>
+          Choose bridesmaid dresses
+        </div>
+        <div class="task">
+          <div class="task-check"></div>
+          Schedule cake tasting
+        </div>
+        <div class="task">
+          <div class="task-check"></div>
+          Finalize guest list
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools" id="tools">
+  <div class="tools-header fade-in">
+    <div class="section-label">Everything You Need</div>
+    <h2 class="section-title">Ten tools. <em>One app.</em><br>Zero stress.</h2>
+    <p class="section-sub">Every feature a professional wedding planner would manage — built into one beautiful, easy-to-use platform designed for the budget-conscious bride.</p>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card fade-in">
+      <div class="tool-icon">🧠</div>
+      <div class="tool-num">01</div>
+      <div class="tool-name">AI Wedding Planner</div>
+      <div class="tool-desc">Chat with your personal AI planner 24/7. Ask anything — from vendor negotiation scripts to timeline advice. Your smartest wedding friend.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">💰</div>
+      <div class="tool-num">02</div>
+      <div class="tool-name">Smart Budget Manager</div>
+      <div class="tool-desc">Enter your total budget and AI instantly breaks it down by category. Real-time tracking, overspend alerts, and money-saving tips built in.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">✅</div>
+      <div class="tool-num">03</div>
+      <div class="tool-name">Dynamic Checklist</div>
+      <div class="tool-desc">Auto-generated from your wedding date, working backwards month by month. Every task explains why it matters and exactly what to do.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">🏢</div>
+      <div class="tool-num">04</div>
+      <div class="tool-name">Vendor Manager</div>
+      <div class="tool-desc">Find, compare, and manage all your vendors in one place. AI drafts your emails, flags contract red flags, and tracks every payment due date.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">👗</div>
+      <div class="tool-num">05</div>
+      <div class="tool-name">The Bride Suite</div>
+      <div class="tool-desc">Your personal journey tracker. Dress shopping appointments, beauty timeline, fitness reminders, and a full bridesmaid coordination portal.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">📱</div>
+      <div class="tool-num">06</div>
+      <div class="tool-name">Content Studio</div>
+      <div class="tool-desc">Upload raw videos and get AI-edited reels ready for Instagram and TikTok. Auto-generates your wedding hashtag and plans your content calendar.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">👥</div>
+      <div class="tool-num">07</div>
+      <div class="tool-name">Guest Manager</div>
+      <div class="tool-desc">Full RSVP tracking, seating chart builder, mass messaging, and a beautiful wedding website — all connected and in sync automatically.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">📅</div>
+      <div class="tool-num">08</div>
+      <div class="tool-name">Day-Of Command Center</div>
+      <div class="tool-desc">Your minute-by-minute wedding day timeline, shareable with every vendor and your wedding party. Emergency kit list included.</div>
+    </div>
+    <div class="tool-card fade-in">
+      <div class="tool-icon">💌</div>
+      <div class="tool-num">09</div>
+      <div class="tool-name">After the Wedding</div>
+      <div class="tool-desc">AI thank-you note writer, honeymoon planner, legal name change guide, and a memory vault to preserve every beautiful moment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header fade-in">
+    <div class="section-label">The Journey</div>
+    <h2 class="section-title">From "Yes!" to<br><em>"I Do"</em> — we've got you.</h2>
+    <p class="section-sub">Tapuy Bride walks you through every phase of wedding planning, so nothing falls through the cracks.</p>
+  </div>
+  <div class="how-steps">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <div class="step-title">Onboard in 3 Minutes</div>
+      <div class="step-desc">Tell us your date, budget, guest count, and dream style. We build your entire personalized plan instantly.</div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">02</div>
+      <div class="step-title">Get Your Full Plan</div>
+      <div class="step-desc">A custom 12-to-18 month roadmap — every task, deadline, and decision mapped out so you always know what's next.</div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">03</div>
+      <div class="step-title">Work Through It Together</div>
+      <div class="step-desc">Check off tasks, chat with your AI planner when stuck, manage vendors, track budget, and coordinate your tribe — all in one app.</div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">04</div>
+      <div class="step-title">Enjoy Your Perfect Day</div>
+      <div class="step-desc">Walk down the aisle knowing everything is handled. Then let us take care of after — from thank-you notes to name changes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner fade-in">
+    <div class="quote-stars">★★★★★</div>
+    <span class="quote-mark">"</span>
+    <p class="quote-text">I couldn't afford a wedding planner. Tapuy Bride was literally my planner. It saved me thousands of dollars and hundreds of hours of stress. I actually enjoyed planning my wedding.</p>
+    <div class="quote-author">— Marisol R., Bride · Tampa, Florida · Budget: $18,000</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header fade-in">
+    <div class="section-label">Simple Pricing</div>
+    <h2 class="section-title">Less than a <em>wedding cake slice.</em><br>Per month.</h2>
+    <p class="section-sub" style="margin: 0 auto;">No hidden fees. Cancel anytime. Costs a fraction of what a real wedding planner charges.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card fade-in">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount">$0</div>
+      <div class="price-period">Free forever</div>
+      <ul class="price-features">
+        <li>Basic checklist & timeline</li>
+        <li>Budget tracker</li>
+        <li>Guest list (up to 50)</li>
+        <li>Wedding website</li>
+        <li>Limited AI chat (10/month)</li>
+      </ul>
+      <button class="btn-price-light">Get Started Free</button>
+    </div>
+    <div class="price-card featured fade-in">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-tier">Bride Plan</div>
+      <div class="price-amount">$9<span style="font-size:1.2rem">.99</span></div>
+      <div class="price-period">per month</div>
+      <ul class="price-features">
+        <li>Everything in Starter</li>
+        <li>Unlimited AI planner chat</li>
+        <li>Vendor email drafting</li>
+        <li>Full budget analytics</li>
+        <li>Bride Suite & beauty timeline</li>
+        <li>Bridesmaid portal</li>
+        <li>Content calendar & hashtag</li>
+      </ul>
+      <button class="btn-price-dark">Start 7-Day Free Trial</button>
+    </div>
+    <div class="price-card fade-in">
+      <div class="price-tier">All-In</div>
+      <div class="price-amount">$19<span style="font-size:1.2rem">.99</span></div>
+      <div class="price-period">per month</div>
+      <ul class="price-features">
+        <li>Everything in Bride Plan</li>
+        <li>AI video editing studio</li>
+        <li>Unlimited guest management</li>
+        <li>Contract red flag scanner</li>
+        <li>Day-of command center</li>
+        <li>Name change guide</li>
+        <li>After-wedding vault</li>
+      </ul>
+      <button class="btn-price-light">Get All-In</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="section-label" style="justify-content:center;color:var(--blush)">Start Today</div>
+  <h2 class="cta-title">Your dream wedding<br><em>starts right here.</em></h2>
+  <p class="cta-sub">Join thousands of budget brides who planned their perfect day without the planner price tag.</p>
+  <div class="cta-input-row">
+    <input type="email" class="cta-input" placeholder="Enter your email to get started...">
+    <button class="btn-primary" style="white-space:nowrap">Join Free</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Tapuy <span>Bride</span></div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="footer-copy">© 2026 Tapuy Bride. All rights reserved.</div>
+</footer>
+
+<!-- DASHBOARD MODAL -->
+<div class="dashboard-overlay" id="dashOverlay" onclick="closeDashboard(event)">
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <div class="dashboard-logo">Tapuy <span>Bride</span></div>
+      <button class="close-btn" onclick="closeDashboardBtn()">✕</button>
+    </div>
+    <div class="dashboard-body">
+      <div class="dash-sidebar">
+        <div class="dash-greeting">
+          <p>Welcome back,</p>
+          <strong>Sofia 👰</strong>
+        </div>
+        <div class="dash-item active"><span class="dash-icon">🏠</span> Dashboard</div>
+        <div class="dash-item"><span class="dash-icon">✅</span> My Checklist</div>
+        <div class="dash-item"><span class="dash-icon">💰</span> Budget</div>
+        <div class="dash-item"><span class="dash-icon">🏢</span> Vendors</div>
+        <div class="dash-item"><span class="dash-icon">👗</span> Bride Suite</div>
+        <div class="dash-item"><span class="dash-icon">📱</span> Content Studio</div>
+        <div class="dash-item"><span class="dash-icon">👥</span> Guests</div>
+        <div class="dash-item"><span class="dash-icon">📅</span> Day-Of</div>
+        <div class="dash-item"><span class="dash-icon">🧠</span> AI Planner</div>
+      </div>
+      <div class="dash-main">
+        <div class="dash-top">
+          <div class="dash-section-title">Good morning, Sofia ✨</div>
+          <div class="countdown-pill">🗓 247 days to go</div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-label">Total Budget</div>
+            <div class="dash-card-val">$18,000</div>
+            <div class="dash-card-sub">$7,560 spent · $10,440 remaining</div>
+            <div class="budget-bar"><div class="budget-fill"></div></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">Planning Progress</div>
+            <div class="dash-card-val">68%</div>
+            <div class="dash-card-sub">34 of 50 tasks complete</div>
+            <div class="budget-bar"><div class="budget-fill" style="width:68%"></div></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">Guests Confirmed</div>
+            <div class="dash-card-val">74 / 110</div>
+            <div class="dash-card-sub">36 RSVP pending · 0 declined</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">Vendors Booked</div>
+            <div class="dash-card-val">6 / 9</div>
+            <div class="dash-card-sub">DJ, florist, cake still needed</div>
+          </div>
+        </div>
+        <div class="checklist-section">
+          <div class="checklist-header">
+            <div class="checklist-title">This Month's Tasks</div>
+            <div class="checklist-badge">4 remaining</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box checked" onclick="toggleCheck(this)">✓</div>
+            <div class="check-text done">Book venue & pay deposit</div>
+            <div class="check-due">Done ✓</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box checked" onclick="toggleCheck(this)">✓</div>
+            <div class="check-text done">Schedule engagement photos</div>
+            <div class="check-due">Done ✓</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Schedule cake tasting appointments</div>
+            <div class="check-due">Due May 10</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Send save-the-dates to all guests</div>
+            <div class="check-due">Due May 15</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Interview 3 DJ options (AI drafted emails ready)</div>
+            <div class="check-due">Due May 20</div>
+          </div>
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Book hair & makeup trial appointment</div>
+            <div class="check-due">Due May 30</div>
+          </div>
+        </div>
+        <div class="ai-chat">
+          <div class="ai-chat-title">🧠 Ask Your AI Planner</div>
+          <div class="ai-message" id="aiMessage">
+            Hi Sofia! 👋 You're doing amazing — 68% done with 247 days to go. I noticed you still need a DJ and florist. Would you like me to draft outreach emails for 3 vendors in your area that fit your $800 DJ budget?
+          </div>
+          <div class="ai-input-row">
+            <input type="text" class="ai-input" id="aiInput" placeholder="Ask me anything about your wedding..." onkeypress="handleAI(event)">
+            <button class="ai-send" onclick="sendAI()">Ask ✦</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Fade in on scroll
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Dashboard
+  function openDashboard() {
+    document.getElementById('dashOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDashboardBtn() {
+    document.getElementById('dashOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeDashboard(e) {
+    if (e.target === document.getElementById('dashOverlay')) closeDashboardBtn();
+  }
+
+  // Checklist toggle
+  function toggleCheck(el) {
+    const item = el.closest('.check-item');
+    const text = item.querySelector('.check-text');
+    const due = item.querySelector('.check-due');
+    if (el.classList.contains('checked')) {
+      el.classList.remove('checked');
+      el.textContent = '';
+      text.classList.remove('done');
+      due.textContent = due.dataset.orig || due.textContent;
+    } else {
+      el.classList.add('checked');
+      el.textContent = '✓';
+      text.classList.add('done');
+      if (!due.dataset.orig) due.dataset.orig = due.textContent;
+      due.textContent = 'Done ✓';
+    }
+  }
+
+  // AI Chat
+  const aiResponses = [
+    "Great question! For a $18K budget in Miami, I'd recommend allocating around $800-$1,200 for a DJ. Want me to draft outreach emails to 3 top-rated DJs in your area?",
+    "Your cake tasting should ideally happen 6-8 months before your wedding. I'd suggest scheduling 2-3 tastings. Want a checklist of questions to ask each bakery?",
+    "For save-the-dates at your budget, digital is the way to go — saves $200-$400 vs. printed. I can draft the message for you right now if you'd like!",
+    "Based on your June 14th date in Miami, sunset will be around 8:07 PM — perfect for golden hour photos around 7:30 PM. Want me to update your day-of timeline?",
+    "I can draft a vendor negotiation email for you right now. Most vendors in your budget range have 10-15% flexibility, especially if you book early. Just say the word!"
+  ];
+  let aiIdx = 0;
+
+  function sendAI() {
+    const input = document.getElementById('aiInput');
+    const msg = document.getElementById('aiMessage');
+    if (!input.value.trim()) return;
+    msg.textContent = '...thinking...';
+    setTimeout(() => {
+      msg.textContent = aiResponses[aiIdx % aiResponses.length];
+      aiIdx++;
+    }, 800);
+    input.value = '';
+  }
+
+  function handleAI(e) {
+    if (e.key === 'Enter') sendAI();
+  }
+
+  // Sidebar navigation
+  document.querySelectorAll('.dash-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.dash-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
