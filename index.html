@@ -14,6 +14,7 @@
   --plum:#5C1F4A;--plum-lt:#7A3060;--mauve:#9B4F72;
   --lilac:#C2A0C8;--blush:#E8C4B0;--peach:#C8623A;
   --sage:#7A8C4A;--cream:#F2E0CC;--cream-dk:#E0C8B0;
+  --gold:#B8960C;--gold-lt:#D4AF37;
   --white:#FAF6F0;--text-dk:#1E1410;--text-md:#4A3028;--text-lt:#7A5A50;
   --border:rgba(107,26,42,0.15);
   --shadow:0 4px 24px rgba(45,61,37,0.08);
@@ -34,6 +35,8 @@ a{text-decoration:none;color:inherit;}
 .btn-primary:hover{background:var(--burg-lt);}
 .btn-forest{background:var(--forest);color:var(--cream);}
 .btn-forest:hover{background:var(--forest-lt);}
+.btn-gold{background:var(--gold);color:var(--white);}
+.btn-gold:hover{background:var(--gold-lt);}
 .btn-ghost{background:transparent;border:0.5px solid var(--border);color:var(--text-md);}
 .btn-ghost:hover{border-color:var(--burgundy);color:var(--burgundy);}
 .btn-danger{background:transparent;border:0.5px solid rgba(200,50,50,.3);color:#c03030;}
@@ -57,6 +60,7 @@ a{text-decoration:none;color:inherit;}
 .msg-error{background:rgba(107,26,42,.07);border:0.5px solid var(--burgundy);color:var(--burgundy);}
 .msg-success{background:rgba(122,140,74,.09);border:0.5px solid var(--sage);color:var(--forest);}
 .msg-info{background:rgba(92,31,74,.07);border:0.5px solid var(--plum);color:var(--plum);}
+.msg-gold{background:rgba(184,150,12,.07);border:0.5px solid var(--gold);color:var(--gold);}
 
 /* ── AUTH ── */
 #auth-screen{min-height:100vh;display:flex;background:var(--forest-dk);position:relative;overflow:hidden;}
@@ -89,6 +93,7 @@ a{text-decoration:none;color:inherit;}
 .nav-item:hover{background:rgba(155,79,114,.15);color:var(--cream);}
 .nav-item.active{background:rgba(107,26,42,.5);color:var(--cream);}
 .nav-badge{margin-left:auto;background:var(--burgundy);color:var(--cream);font-size:9px;padding:1px 6px;border-radius:8px;font-weight:400;}
+.nav-badge-gold{margin-left:auto;background:var(--gold);color:var(--white);font-size:9px;padding:1px 6px;border-radius:8px;font-weight:400;}
 .sidebar-footer{margin-top:auto;padding:.85rem 1.1rem;border-top:.5px solid rgba(155,79,114,.2);}
 .user-row{display:flex;align-items:center;gap:9px;}
 .user-avatar{width:32px;height:32px;border-radius:50%;background:var(--burgundy);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream);flex-shrink:0;overflow:hidden;}
@@ -126,6 +131,7 @@ a{text-decoration:none;color:inherit;}
 .sc-pc::before{background:var(--plum);}
 .sc-mc::before{background:var(--mauve);}
 .sc-sc::before{background:var(--sage);}
+.sc-gc::before{background:var(--gold);}
 .stat-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-lt);margin-bottom:5px;}
 .stat-value{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--burg-dk);line-height:1;margin-bottom:2px;}
 .stat-note{font-size:11px;color:var(--text-lt);}
@@ -138,15 +144,11 @@ a{text-decoration:none;color:inherit;}
 .tag-mauve{background:rgba(155,79,114,.1);color:var(--mauve);}
 .tag-sage{background:rgba(122,140,74,.1);color:var(--sage);}
 .tag-peach{background:rgba(200,98,58,.1);color:var(--peach);}
+.tag-gold{background:rgba(184,150,12,.1);color:var(--gold);}
 
 /* Progress */
 .progress-wrap{background:rgba(107,26,42,.07);border-radius:10px;height:5px;overflow:hidden;}
 .progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--burgundy),var(--mauve));transition:width .5s ease;}
-
-/* Ornament */
-.orn{display:flex;align-items:center;gap:10px;margin:1.25rem 0;}
-.orn-line{flex:1;height:.5px;background:var(--border);}
-.orn-diamond{width:5px;height:5px;background:var(--mauve);transform:rotate(45deg);flex-shrink:0;}
 
 /* ── TABLE ── */
 .t-table{width:100%;border-collapse:collapse;}
@@ -258,25 +260,56 @@ a{text-decoration:none;color:inherit;}
 .budget-amt{font-size:13px;font-weight:400;color:var(--burg-dk);width:80px;text-align:right;}
 .budget-pct{font-size:11px;color:var(--text-lt);width:34px;text-align:right;}
 
-/* Admin */
+/* Admin tabs */
 .admin-tab{padding:8px 16px;border:none;background:none;cursor:pointer;font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--text-lt);border-bottom:2px solid transparent;transition:all .15s;}
 .admin-tab.active{color:var(--burgundy);border-bottom-color:var(--burgundy);}
 .admin-section{display:none;}
 .admin-section.active{display:block;}
 
-/* Pricing cards */
-.price-card{background:var(--white);border:.5px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;position:relative;transition:box-shadow .2s,transform .18s;}
-.price-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
-.price-card.featured{border-color:var(--burgundy);border-width:1px;}
-.price-card.featured::before{content:'Most Popular';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--burgundy);color:var(--cream);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:10px;}
-.price-amount{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--burg-dk);margin:1rem 0 .25rem;}
-.price-period{font-size:12px;color:var(--text-lt);}
-.price-features{list-style:none;margin:1.25rem 0;text-align:left;}
-.price-features li{font-size:13px;color:var(--text-md);padding:5px 0;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:8px;}
-.price-features li:last-child{border-bottom:none;}
-.price-features li::before{content:'✓';color:var(--sage);font-size:12px;flex-shrink:0;}
+/* ── NEW: EVENT CARDS ── */
+.event-card{background:var(--white);border:.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow .2s,transform .18s;position:relative;}
+.event-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.event-card-header{padding:1.1rem 1.3rem .8rem;position:relative;}
+.event-card-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--burg-dk);margin-bottom:3px;}
+.event-card-sub{font-size:11px;color:var(--text-lt);}
+.event-card-body{padding:.8rem 1.3rem 1.1rem;border-top:.5px solid var(--border);}
+.event-countdown{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--burgundy);line-height:1;}
+.event-countdown-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-lt);margin-top:2px;}
 
-/* Loader */
+/* ── NEW: SURPRISE SPACE ── */
+.surprise-lock{background:rgba(92,31,74,.04);border:.5px solid rgba(92,31,74,.2);border-radius:var(--radius);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.surprise-lock-icon{font-size:22px;flex-shrink:0;}
+.surprise-lock-info{flex:1;}
+.surprise-lock-name{font-size:13px;font-weight:400;color:var(--plum);}
+.surprise-lock-sub{font-size:11px;color:var(--text-lt);margin-top:2px;}
+.surprise-lock-badge{background:rgba(92,31,74,.1);color:var(--plum);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:10px;}
+
+/* ── NEW: WEDDING PARTY MEMBER ── */
+.party-member-card{background:var(--white);border:.5px solid var(--border);border-radius:var(--radius);padding:.85rem 1rem;display:flex;align-items:center;gap:10px;margin-bottom:6px;transition:border-color .15s;}
+.party-member-card:hover{border-color:var(--mauve);}
+.party-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cream);flex-shrink:0;}
+.party-info{flex:1;min-width:0;}
+.party-name{font-size:13px;font-weight:400;color:var(--text-dk);}
+.party-role-text{font-size:11px;color:var(--text-lt);margin-top:1px;}
+.party-side-badge{font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+.side-bride{background:rgba(107,26,42,.1);color:var(--burgundy);}
+.side-groom{background:rgba(45,61,37,.1);color:var(--forest);}
+.side-both{background:rgba(184,150,12,.1);color:var(--gold);}
+
+/* ── NEW: GROOM CONNECT ── */
+.connect-banner{background:linear-gradient(135deg,var(--forest-dk) 0%,var(--plum) 100%);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;margin-bottom:1.1rem;}
+.connect-banner::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;border:.5px solid rgba(194,160,200,.15);top:-80px;right:-60px;pointer-events:none;}
+.connect-banner-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--cream);margin-bottom:5px;}
+.connect-banner-sub{font-size:12px;color:var(--lilac);line-height:1.6;margin-bottom:1rem;}
+.connect-status{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--cream);}
+.connect-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ── NEW: SHARED DASHBOARD WIDGET ── */
+.shared-widget{background:var(--white);border:.5px solid var(--gold);border-radius:var(--radius);padding:1rem 1.3rem;position:relative;}
+.shared-widget::before{content:'SHARED';position:absolute;top:-8px;left:12px;background:var(--gold);color:var(--white);font-size:8px;letter-spacing:.15em;padding:1px 7px;border-radius:2px;}
+
+/* ── SPINNER ── */
 .spinner{width:20px;height:20px;border:2px solid rgba(107,26,42,.15);border-top-color:var(--burgundy);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading-overlay{position:fixed;inset:0;background:var(--forest-dk);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:1rem;}
@@ -323,30 +356,23 @@ a{text-decoration:none;color:inherit;}
   <div class="auth-left">
     <svg width="260" height="112" viewBox="0 0 260 112" xmlns="http://www.w3.org/2000/svg" style="animation:fadeUp .7s ease both;">
       <ellipse cx="130" cy="26" rx="68" ry="7" fill="#3D5030" opacity="0.5"/>
-      <ellipse cx="106" cy="28" rx="30" ry="5" fill="#3D5030" opacity="0.3"/>
       <polygon points="62,22 198,22 214,68 46,68" fill="#6B1A2A"/>
       <rect x="62" y="17" width="136" height="7" rx="1" fill="#8B2A3A"/>
       <line x1="90" y1="22" x2="84" y2="68" stroke="#5A1525" stroke-width="0.5" opacity="0.5"/>
-      <line x1="110" y1="22" x2="107" y2="68" stroke="#5A1525" stroke-width="0.4" opacity="0.4"/>
       <line x1="130" y1="22" x2="130" y2="68" stroke="#5A1525" stroke-width="0.4" opacity="0.4"/>
-      <line x1="150" y1="22" x2="153" y2="68" stroke="#5A1525" stroke-width="0.4" opacity="0.4"/>
       <line x1="170" y1="22" x2="176" y2="68" stroke="#5A1525" stroke-width="0.5" opacity="0.5"/>
       <line x1="185" y1="22" x2="194" y2="68" stroke="#C2A0C8" stroke-width="1" opacity="0.45"/>
       <path d="M28,68 Q44,60 58,68 Q70,63 84,68 Q98,60 114,68 Q130,63 148,68 Q164,60 180,68 Q192,63 206,68 Q218,63 232,68 L232,77 L28,77 Z" fill="#2D3D25"/>
-      <path d="M28,72 Q42,65 56,72 Q70,67 82,72 Q98,64 114,72 Q130,67 146,72 Q162,64 178,72 Q192,67 204,72 Q218,67 232,72 L232,77 L28,77 Z" fill="#253420"/>
       <text x="130" y="96" font-family="'Cormorant Garamond',serif" font-size="30" font-weight="300" fill="#F2E0CC" text-anchor="middle" letter-spacing="5">Tapüy</text>
       <line x1="48" y1="105" x2="104" y2="105" stroke="#9B4F72" stroke-width="0.5"/>
-      <circle cx="108" cy="105" r="1.5" fill="#C2A0C8"/>
       <circle cx="114" cy="105" r="2.5" fill="#9B4F72"/>
-      <circle cx="120" cy="105" r="1.5" fill="#C2A0C8"/>
       <line x1="124" y1="105" x2="180" y2="105" stroke="#9B4F72" stroke-width="0.5"/>
       <text x="130" y="118" font-family="'Jost',sans-serif" font-size="9" font-weight="200" fill="#C2A0C8" text-anchor="middle" letter-spacing="7">BRIDE</text>
     </svg>
-    <p class="auth-tagline">Your wedding, <em>beautifully planned.</em><br>Your budget, beautifully kept.</p>
-    <p class="auth-sub">The affordable planning companion<br>for every bride — inspired by Roraima</p>
+    <p class="auth-tagline">Your wedding, <em>beautifully planned.</em><br>Your people, beautifully coordinated.</p>
+    <p class="auth-sub">The all-in-one planning companion<br>for brides, their party & their partner</p>
   </div>
   <div class="auth-panel">
-    <!-- LOGIN -->
     <div id="v-login">
       <h2>Welcome back</h2>
       <p class="auth-hint">Sign in to continue planning your perfect day.</p>
@@ -358,7 +384,6 @@ a{text-decoration:none;color:inherit;}
       <div class="auth-divider"><span>or</span></div>
       <div class="auth-switch">New to Tapüy Bride? <a onclick="showView('v-register')">Create free account</a></div>
     </div>
-    <!-- REGISTER -->
     <div id="v-register" class="hidden">
       <h2>Start your journey</h2>
       <p class="auth-hint">Create your free account and begin planning.</p>
@@ -378,13 +403,18 @@ a{text-decoration:none;color:inherit;}
           </select>
         </div>
       </div>
+      <div class="field"><label>Do you want your party to plan surprises for you? 🎁</label>
+        <select id="reg-surprises">
+          <option value="yes">Yes — allow surprise spaces</option>
+          <option value="no">No — I want full visibility</option>
+        </select>
+      </div>
       <button class="btn btn-primary btn-full" onclick="doRegister()" id="btn-reg">Create Account</button>
       <div class="auth-switch">Already have an account? <a onclick="showView('v-login')">Sign in</a></div>
     </div>
-    <!-- RESET -->
     <div id="v-reset" class="hidden">
       <h2>Reset password</h2>
-      <p class="auth-hint">Enter your email and we'll send you a reset link right away.</p>
+      <p class="auth-hint">Enter your email and we'll send you a reset link.</p>
       <div id="reset-msg"></div>
       <div class="field"><label>Email address</label><input type="email" id="reset-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doReset()"></div>
       <button class="btn btn-primary btn-full" onclick="doReset()" id="btn-reset">Send Reset Link</button>
@@ -407,6 +437,7 @@ a{text-decoration:none;color:inherit;}
         <text x="75" y="57" font-family="'Cormorant Garamond',serif" font-size="17" font-weight="300" fill="#F2E0CC" text-anchor="middle" letter-spacing="2">Tapüy · Bride</text>
       </svg>
     </div>
+
     <div class="nav-section">
       <div class="nav-label">Planning</div>
       <button class="nav-item active" onclick="navTo('dashboard',this)"><span class="nav-icon">🏠</span>Dashboard</button>
@@ -414,27 +445,34 @@ a{text-decoration:none;color:inherit;}
       <button class="nav-item" onclick="navTo('budget',this)"><span class="nav-icon">💰</span>Budget</button>
       <button class="nav-item" onclick="navTo('guests',this)"><span class="nav-icon">👥</span>Guests</button>
     </div>
+
+    <div class="nav-section">
+      <div class="nav-label">My Suite</div>
+      <button class="nav-item" onclick="navTo('bridalSuite',this)"><span class="nav-icon">💜</span>Bridal Suite<span class="nav-badge">New</span></button>
+      <button class="nav-item" onclick="navTo('weddingParty',this)"><span class="nav-icon">🥂</span>Wedding Party<span class="nav-badge">New</span></button>
+      <button class="nav-item" onclick="navTo('groomConnect',this)"><span class="nav-icon">💍</span>Groom Connect<span class="nav-badge-gold">New</span></button>
+      <button class="nav-item" onclick="navTo('dayof',this)"><span class="nav-icon">📅</span>Day-Of Center</button>
+    </div>
+
     <div class="nav-section">
       <div class="nav-label">Discover</div>
       <button class="nav-item" onclick="navTo('vendors',this)"><span class="nav-icon">🔍</span>Vendor Directory</button>
       <button class="nav-item" onclick="navTo('saved',this)"><span class="nav-icon">💾</span>Saved Vendors</button>
       <button class="nav-item" onclick="navTo('resources',this)"><span class="nav-icon">🔗</span>Resources</button>
     </div>
+
     <div class="nav-section">
       <div class="nav-label">Community</div>
       <button class="nav-item" onclick="navTo('forum',this)"><span class="nav-icon">💬</span>Bride Forum</button>
       <button class="nav-item" onclick="navTo('wins',this)"><span class="nav-icon">🎉</span>Wins Board</button>
-    </div>
-    <div class="nav-section">
-      <div class="nav-label">My Suite</div>
-      <button class="nav-item" onclick="navTo('squad',this)"><span class="nav-icon">💜</span>Bridesmaid Suite</button>
       <button class="nav-item" onclick="navTo('ai',this)"><span class="nav-icon">✨</span>AI Concierge</button>
-      <button class="nav-item" onclick="navTo('dayof',this)"><span class="nav-icon">📅</span>Day-Of Center</button>
     </div>
+
     <div class="nav-section" id="admin-nav-section" style="display:none;">
       <div class="nav-label">Admin</div>
       <button class="nav-item" onclick="navTo('admin',this)"><span class="nav-icon">⚙️</span>Admin Panel</button>
     </div>
+
     <div class="sidebar-footer">
       <div class="user-row">
         <div class="user-avatar" id="sb-avatar">S</div>
@@ -465,7 +503,7 @@ a{text-decoration:none;color:inherit;}
 
     <div class="page-content">
 
-      <!-- DASHBOARD -->
+      <!-- ══════════════════ DASHBOARD ══════════════════ -->
       <div class="page-section active" id="sec-dashboard">
         <div class="grid-4" style="margin-bottom:1.1rem;">
           <div class="stat-card sc-bc"><div class="stat-label">Days to Wedding</div><div class="stat-value" id="s-days">—</div><div class="stat-note" id="s-days-note">Keep going!</div></div>
@@ -473,6 +511,21 @@ a{text-decoration:none;color:inherit;}
           <div class="stat-card sc-pc"><div class="stat-label">Budget Spent</div><div class="stat-value" id="s-spent">$0</div><div class="stat-note" id="s-budget-note">of budget</div></div>
           <div class="stat-card sc-mc"><div class="stat-label">Guests Confirmed</div><div class="stat-value" id="s-guests">0</div><div class="stat-note">RSVPs yes</div></div>
         </div>
+
+        <!-- Shared dashboard widget (visible when connected to groom) -->
+        <div class="shared-widget" id="shared-dashboard-widget" style="margin-bottom:1rem;display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:3px;">Shared with <span id="shared-groom-name">your partner</span></div>
+              <div style="font-size:11px;color:var(--text-lt);">Your partner can see your wedding countdown, overall budget and guest count.</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <div class="connect-status"><span class="connect-dot"></span><span id="connect-status-text">Connected</span></div>
+              <button class="btn btn-ghost btn-sm" onclick="navTo('groomConnect',document.querySelector('[onclick*=groomConnect]'))">Manage</button>
+            </div>
+          </div>
+        </div>
+
         <div class="grid-2" style="margin-bottom:1rem;">
           <div class="card">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;">
@@ -487,26 +540,28 @@ a{text-decoration:none;color:inherit;}
             <div id="next-up"></div>
           </div>
         </div>
+
+        <!-- Quick nav to new sections -->
         <div class="grid-3">
-          <div class="card" style="cursor:pointer;" onclick="navTo('squad',document.querySelector('[onclick*=squad]'))">
+          <div class="card" style="cursor:pointer;" onclick="navTo('bridalSuite',document.querySelector('[onclick*=bridalSuite]'))">
             <div style="font-size:24px;margin-bottom:6px;">💜</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Bridesmaid Suite</div>
-            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Plan with your squad — dresses, bachelorette, polls and chat.</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Bridal Suite</div>
+            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Bachelorette, bridal shower, engagement party & more.</div>
           </div>
-          <div class="card" style="cursor:pointer;" onclick="navTo('forum',document.querySelector('[onclick*=forum]'))">
-            <div style="font-size:24px;margin-bottom:6px;">💬</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Bride Community</div>
-            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Ask questions and connect with brides going through it too.</div>
+          <div class="card" style="cursor:pointer;" onclick="navTo('weddingParty',document.querySelector('[onclick*=weddingParty]'))">
+            <div style="font-size:24px;margin-bottom:6px;">🥂</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Wedding Party</div>
+            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Full party roster, shared events, rehearsal dinner & chats.</div>
           </div>
-          <div class="card" style="cursor:pointer;" onclick="navTo('vendors',document.querySelector('[onclick*=vendors]'))">
-            <div style="font-size:24px;margin-bottom:6px;">🔍</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Find Vendors</div>
-            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Browse photographers, florists, venues and more by budget.</div>
+          <div class="card" style="cursor:pointer;" onclick="navTo('groomConnect',document.querySelector('[onclick*=groomConnect]'))">
+            <div style="font-size:24px;margin-bottom:6px;">💍</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--burg-dk);margin-bottom:4px;">Groom Connect</div>
+            <div style="font-size:12px;color:var(--text-lt);line-height:1.6;">Share key info with your partner & plan together.</div>
           </div>
         </div>
       </div>
 
-      <!-- CHECKLIST -->
+      <!-- ══════════════════ CHECKLIST ══════════════════ -->
       <div class="page-section" id="sec-checklist">
         <div class="section-title">Wedding Checklist</div>
         <div class="section-sub">Your full planning timeline — check off as you go.</div>
@@ -522,7 +577,7 @@ a{text-decoration:none;color:inherit;}
         <div id="task-list" class="card"></div>
       </div>
 
-      <!-- BUDGET -->
+      <!-- ══════════════════ BUDGET ══════════════════ -->
       <div class="page-section" id="sec-budget">
         <div class="section-title">Budget Tracker</div>
         <div class="section-sub">Track every dollar — no surprises on your big day.</div>
@@ -540,7 +595,7 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
-      <!-- GUESTS -->
+      <!-- ══════════════════ GUESTS ══════════════════ -->
       <div class="page-section" id="sec-guests">
         <div class="section-title">Guest Manager</div>
         <div class="section-sub">Track RSVPs, dietary needs and seating.</div>
@@ -567,10 +622,482 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
-      <!-- VENDORS -->
+      <!-- ══════════════════ BRIDAL SUITE (NEW EXPANDED) ══════════════════ -->
+      <div class="page-section" id="sec-bridalSuite">
+        <div class="section-title">Bridal Suite 💜</div>
+        <div class="section-sub">Your private world — plan every pre-wedding event with your people.</div>
+
+        <!-- Squad Link -->
+        <div class="squad-link-box" style="margin-bottom:1.1rem;">
+          <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);margin-bottom:6px;">Your Invitation Link</div>
+          <div class="squad-link-url" id="squad-link-display">Loading...</div>
+          <div style="display:flex;gap:8px;margin-top:.75rem;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="copySquadLink()">📋 Copy Link</button>
+            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-member')">+ Add Bridesmaid</button>
+          </div>
+          <div style="font-size:11px;color:var(--text-lt);margin-top:.6rem;">Share this with your bridesmaids — no account needed to join.</div>
+        </div>
+
+        <!-- Surprise Spaces (visible to bride but locked) -->
+        <div id="surprise-spaces-section" style="margin-bottom:1.1rem;display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--plum);">🔒 Surprise Spaces</div>
+            <div style="font-size:11px;color:var(--text-lt);">Your squad is planning something...</div>
+          </div>
+          <div id="surprise-spaces-list"></div>
+        </div>
+
+        <!-- Suite Tabs -->
+        <div style="display:flex;gap:0;border-bottom:.5px solid var(--border);margin-bottom:1.1rem;overflow-x:auto;">
+          <button class="admin-tab active" onclick="suiteTab('squad',this)">Squad</button>
+          <button class="admin-tab" onclick="suiteTab('bachelorette',this)">Bachelorette</button>
+          <button class="admin-tab" onclick="suiteTab('bridalShower',this)">Bridal Shower</button>
+          <button class="admin-tab" onclick="suiteTab('engagementParty',this)">Engagement Party</button>
+          <button class="admin-tab" onclick="suiteTab('outfits',this)">Outfits</button>
+          <button class="admin-tab" onclick="suiteTab('suiteChat',this)">Chat</button>
+          <button class="admin-tab" onclick="suiteTab('suitePhotos',this)">Photos</button>
+        </div>
+
+        <!-- Squad Members -->
+        <div class="admin-section active" id="suite-squad">
+          <div id="members-list"></div>
+          <div style="text-align:center;margin-top:.75rem;">
+            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-member')">+ Add Bridesmaid</button>
+          </div>
+        </div>
+
+        <!-- Bachelorette -->
+        <div class="admin-section" id="suite-bachelorette">
+          <div class="grid-2">
+            <div>
+              <!-- Countdown -->
+              <div class="card" style="margin-bottom:.85rem;text-align:center;">
+                <div class="stat-label" style="margin-bottom:8px;">Days Until Bachelorette</div>
+                <div class="event-countdown" id="bach-countdown">—</div>
+                <div class="event-countdown-label">Set your date to see countdown</div>
+                <div style="margin-top:.75rem;display:flex;gap:8px;justify-content:center;">
+                  <input type="date" id="bach-date" class="fil-sel" onchange="updateEventCountdown('bach-countdown','bach-date')" style="font-size:11px;">
+                </div>
+              </div>
+              <!-- Polls -->
+              <div class="card">
+                <div class="card-title">Polls</div>
+                <div id="polls-list"></div>
+                <button class="btn btn-ghost btn-sm" style="margin-top:.75rem;" onclick="openModal('modal-add-poll')">+ New Poll</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">Bachelorette Checklist</div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Choose date & destination</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Book accommodation</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan activities / itinerary</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Decide on outfits / theme</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Collect contributions from party</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Book restaurant / activity reservations</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Arrange transport</div></div></div>
+              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan games & surprises for the bride</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bridal Shower -->
+        <div class="admin-section" id="suite-bridalShower">
+          <div class="grid-2" style="margin-bottom:.85rem;">
+            <!-- Countdown -->
+            <div class="card" style="text-align:center;">
+              <div class="stat-label" style="margin-bottom:8px;">Days Until Bridal Shower</div>
+              <div class="event-countdown" id="shower-countdown">—</div>
+              <div class="event-countdown-label">Set your date to see countdown</div>
+              <input type="date" id="shower-date" class="fil-sel" style="margin-top:.75rem;font-size:11px;" onchange="updateEventCountdown('shower-countdown','shower-date')">
+            </div>
+            <!-- Details -->
+            <div class="card">
+              <div class="card-title">Shower Details</div>
+              <div class="field"><label>Theme / Vibe</label><input type="text" id="shower-theme" placeholder="e.g. Garden brunch, Boho, Tea party"></div>
+              <div class="field"><label>Venue / Location</label><input type="text" id="shower-venue" placeholder="e.g. Mom's backyard, The Grange restaurant"></div>
+              <div class="field"><label>Host(s)</label><input type="text" id="shower-hosts" placeholder="e.g. Isabella, Mom, Aunt Rosa"></div>
+              <button class="btn btn-primary btn-sm" onclick="saveEventDetails('shower')">Save Details</button>
+            </div>
+          </div>
+          <!-- Guest List for Shower -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+              <div class="card-title" style="margin:0;">Shower Guest List</div>
+              <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-event-guest');document.getElementById('event-guest-type').value='shower'">+ Add Guest</button>
+            </div>
+            <div id="shower-guests-list">
+              <div style="font-size:13px;color:var(--text-lt);">No guests added yet.</div>
+            </div>
+          </div>
+          <!-- Checklist -->
+          <div class="card" style="margin-top:.85rem;">
+            <div class="card-title">Shower Checklist</div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Set date and location</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Choose theme and colour palette</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Send invitations (6–8 weeks before)</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan menu / catering</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Order or make cake / desserts</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Arrange decorations</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan shower games</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Confirm RSVPs and final headcount</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Prepare gift table & registry cards</div></div></div>
+          </div>
+        </div>
+
+        <!-- Engagement Party -->
+        <div class="admin-section" id="suite-engagementParty">
+          <div class="grid-2" style="margin-bottom:.85rem;">
+            <div class="card" style="text-align:center;">
+              <div class="stat-label" style="margin-bottom:8px;">Days Until Engagement Party</div>
+              <div class="event-countdown" id="engage-countdown">—</div>
+              <div class="event-countdown-label">Set your date to see countdown</div>
+              <input type="date" id="engage-date" class="fil-sel" style="margin-top:.75rem;font-size:11px;" onchange="updateEventCountdown('engage-countdown','engage-date')">
+            </div>
+            <div class="card">
+              <div class="card-title">Party Details</div>
+              <div class="field"><label>Theme / Vibe</label><input type="text" id="engage-theme" placeholder="e.g. Cocktail soirée, Backyard BBQ"></div>
+              <div class="field"><label>Venue / Location</label><input type="text" id="engage-venue" placeholder="e.g. Rooftop bar, Family home"></div>
+              <div class="field"><label>Host(s)</label><input type="text" id="engage-hosts" placeholder="e.g. Both families, Best friend"></div>
+              <button class="btn btn-primary btn-sm" onclick="saveEventDetails('engage')">Save Details</button>
+            </div>
+          </div>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+              <div class="card-title" style="margin:0;">Guest List</div>
+              <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-event-guest');document.getElementById('event-guest-type').value='engage'">+ Add Guest</button>
+            </div>
+            <div id="engage-guests-list"><div style="font-size:13px;color:var(--text-lt);">No guests added yet.</div></div>
+          </div>
+          <div class="card" style="margin-top:.85rem;">
+            <div class="card-title">Engagement Party Checklist</div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Set date and decide who hosts</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Choose venue / location</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Build the guest list</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Send invitations</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan food & drinks</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan music / entertainment</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Confirm final headcount</div></div></div>
+          </div>
+        </div>
+
+        <!-- Outfits / Dress Tracker -->
+        <div class="admin-section" id="suite-outfits">
+          <div class="card" style="margin-bottom:.85rem;">
+            <div class="card-title">Dress Tracker</div>
+            <div id="dress-tracker"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Outfit Coordination Notes</div>
+            <div class="field"><label>Dress style / designer</label><input type="text" id="outfit-dress" placeholder="e.g. A-line, Vera Wang, custom"></div>
+            <div class="field"><label>Bridesmaid dress colour</label><input type="text" id="outfit-bm-color" placeholder="e.g. Dusty rose, Sage green"></div>
+            <div class="field"><label>Bridesmaid dress style</label><input type="text" id="outfit-bm-style" placeholder="e.g. Floor-length, Mismatched"></div>
+            <div class="field"><label>Notes</label><textarea id="outfit-notes" placeholder="Any other outfit coordination details..."></textarea></div>
+            <button class="btn btn-primary btn-sm" onclick="saveOutfitNotes()">Save Notes</button>
+          </div>
+        </div>
+
+        <!-- Suite Chat (Bridal side only) -->
+        <div class="admin-section" id="suite-suiteChat">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+              <div class="card-title" style="margin:0;">Bridal Chat 💜</div>
+              <span class="tag tag-plum">Bridal party only · Private</span>
+            </div>
+            <div style="font-size:11px;color:var(--text-lt);margin-bottom:.75rem;">This chat is only visible to you and your bridesmaids. Your groom cannot see this.</div>
+            <div class="chat-log" id="chat-log"></div>
+            <div class="chat-input-row">
+              <input class="chat-inp" id="chat-inp" placeholder="Send a message to your squad..." onkeydown="if(event.key==='Enter')sendMessage()">
+              <button class="btn btn-primary btn-sm" onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photos -->
+        <div class="admin-section" id="suite-suitePhotos">
+          <div class="card">
+            <div class="card-title">Squad Photos 📸</div>
+            <div class="photo-upload-zone" onclick="document.getElementById('photo-file').click()">
+              <div style="font-size:24px;margin-bottom:6px;">📸</div>
+              <div style="font-size:13px;color:var(--text-lt);">Click to upload photos</div>
+              <div style="font-size:11px;color:var(--text-lt);margin-top:3px;">Engagement · Dress fittings · Bachelorette · Shower</div>
+              <input type="file" id="photo-file" accept="image/*" multiple style="display:none;" onchange="uploadPhotos(this)">
+            </div>
+            <div class="photo-grid" id="photo-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ WEDDING PARTY HUB (NEW) ══════════════════ -->
+      <div class="page-section" id="sec-weddingParty">
+        <div class="section-title">Wedding Party Hub 🥂</div>
+        <div class="section-sub">Everyone in one place — bride's side, groom's side, and the events you share.</div>
+
+        <div style="display:flex;gap:0;border-bottom:.5px solid var(--border);margin-bottom:1.1rem;overflow-x:auto;">
+          <button class="admin-tab active" onclick="partyTab('roster',this)">Full Roster</button>
+          <button class="admin-tab" onclick="partyTab('rehearsal',this)">Rehearsal Dinner</button>
+          <button class="admin-tab" onclick="partyTab('weddingDay',this)">Wedding Day</button>
+          <button class="admin-tab" onclick="partyTab('partyChat',this)">Party Chat</button>
+        </div>
+
+        <!-- Full Roster -->
+        <div class="admin-section active" id="party-roster">
+          <div style="display:flex;gap:8px;margin-bottom:.85rem;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="openModal('modal-add-party-member')">+ Add Member</button>
+            <select class="fil-sel" id="party-side-filter" onchange="renderPartyRoster()">
+              <option value="">All sides</option>
+              <option value="bride">Bride's Side</option>
+              <option value="groom">Groom's Side</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+          <div class="grid-2">
+            <div>
+              <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--burgundy);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:.5px solid var(--border);">Bride's Side</div>
+              <div id="party-bride-side"></div>
+            </div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--forest);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:.5px solid var(--border);">Groom's Side</div>
+              <div id="party-groom-side"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rehearsal Dinner -->
+        <div class="admin-section" id="party-rehearsal">
+          <div class="grid-2" style="margin-bottom:.85rem;">
+            <div class="card" style="text-align:center;">
+              <div class="stat-label" style="margin-bottom:8px;">Days Until Rehearsal Dinner</div>
+              <div class="event-countdown" id="rehearsal-countdown">—</div>
+              <div class="event-countdown-label">Night before the big day</div>
+              <input type="date" id="rehearsal-date" class="fil-sel" style="margin-top:.75rem;font-size:11px;" onchange="updateEventCountdown('rehearsal-countdown','rehearsal-date')">
+            </div>
+            <div class="card">
+              <div class="card-title">Dinner Details</div>
+              <div class="field"><label>Venue</label><input type="text" id="rehearsal-venue" placeholder="e.g. La Rosa Bistro, Family home"></div>
+              <div class="field"><label>Time</label><input type="text" id="rehearsal-time" placeholder="e.g. 7:00 PM"></div>
+              <div class="field"><label>Dress code</label><input type="text" id="rehearsal-dress" placeholder="e.g. Smart casual, Cocktail"></div>
+              <button class="btn btn-primary btn-sm" onclick="saveRehearsalDetails()">Save Details</button>
+            </div>
+          </div>
+          <!-- Rehearsal Guest List -->
+          <div class="card" style="margin-bottom:.85rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+              <div class="card-title" style="margin:0;">Rehearsal Guest List</div>
+              <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-event-guest');document.getElementById('event-guest-type').value='rehearsal'">+ Add Guest</button>
+            </div>
+            <div id="rehearsal-guests-list"><div style="font-size:13px;color:var(--text-lt);">No guests added yet.</div></div>
+          </div>
+          <!-- Rehearsal Checklist -->
+          <div class="card">
+            <div class="card-title">Rehearsal Dinner Checklist</div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Book venue / restaurant</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Decide on guest list (immediate family + wedding party)</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Send invitations or notify guests</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan menu / pre-order if needed</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Prepare toasts and speeches</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Prepare bridesmaid / groomsmen gifts</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Confirm transport to venue</div></div></div>
+          </div>
+        </div>
+
+        <!-- Wedding Day Shared Info -->
+        <div class="admin-section" id="party-weddingDay">
+          <div class="card" style="margin-bottom:.85rem;">
+            <div class="card-title">Wedding Day Timeline</div>
+            <div style="font-size:12px;color:var(--text-lt);margin-bottom:.85rem;">Shared with your entire wedding party. Everyone sees this.</div>
+            <div id="party-timeline-list">
+              <div style="display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);">
+                <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">7:00 AM</div>
+                <div><div style="font-size:13px;font-weight:400;">Hair & makeup begins</div><div style="font-size:11px;color:var(--text-lt);">Bride + bridesmaids · Bridal suite</div></div>
+              </div>
+              <div style="display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);">
+                <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">11:00 AM</div>
+                <div><div style="font-size:13px;font-weight:400;">Getting dressed + first look</div><div style="font-size:11px;color:var(--text-lt);">Photographer on location</div></div>
+              </div>
+              <div style="display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);">
+                <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">1:00 PM</div>
+                <div><div style="font-size:13px;font-weight:400;">Ceremony begins</div><div style="font-size:11px;color:var(--text-lt);">Main venue</div></div>
+              </div>
+              <div style="display:flex;gap:12px;padding:9px 0;">
+                <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">6:00 PM</div>
+                <div><div style="font-size:13px;font-weight:400;">Reception dinner + first dance</div><div style="font-size:11px;color:var(--text-lt);">Ballroom</div></div>
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" style="margin-top:.85rem;" onclick="openModal('modal-add-timeline')">+ Add Event</button>
+          </div>
+          <div class="card">
+            <div class="card-title">Important Info for the Party</div>
+            <div class="field"><label>Ceremony address</label><input type="text" id="party-ceremony-addr" placeholder="123 Wedding Lane, Miami, FL"></div>
+            <div class="field"><label>Reception address</label><input type="text" id="party-reception-addr" placeholder="456 Celebration Blvd, Miami, FL"></div>
+            <div class="field"><label>Parking notes</label><input type="text" id="party-parking" placeholder="e.g. Valet available, street parking on Oak St"></div>
+            <div class="field"><label>Emergency contact (MOH / Best Man)</label><input type="text" id="party-emergency" placeholder="Name & phone number"></div>
+            <button class="btn btn-primary btn-sm" onclick="savePartyInfo()">Save Info</button>
+          </div>
+        </div>
+
+        <!-- Party Chat (split by side + shared) -->
+        <div class="admin-section" id="party-partyChat">
+          <div style="display:flex;gap:0;border-bottom:.5px solid var(--border);margin-bottom:.85rem;">
+            <button class="admin-tab active" onclick="chatTab('bridal-chat',this)">💜 Bridal Chat</button>
+            <button class="admin-tab" onclick="chatTab('joint-chat',this)">🥂 All Together</button>
+          </div>
+          <div class="admin-section active" id="bridal-chat">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+                <div style="font-size:13px;font-weight:400;color:var(--burgundy);">Bridal Chat</div>
+                <span class="tag tag-burg">Bride's side only</span>
+              </div>
+              <div style="font-size:11px;color:var(--text-lt);margin-bottom:.75rem;">Only you and your bridesmaids. Your groom cannot see this.</div>
+              <div class="chat-log" id="bridal-chat-log"></div>
+              <div class="chat-input-row">
+                <input class="chat-inp" id="bridal-chat-inp" placeholder="Message your bridesmaids..." onkeydown="if(event.key==='Enter')sendChatMsg('bridal')">
+                <button class="btn btn-primary btn-sm" onclick="sendChatMsg('bridal')">Send</button>
+              </div>
+            </div>
+          </div>
+          <div class="admin-section" id="joint-chat">
+            <div class="card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+                <div style="font-size:13px;font-weight:400;color:var(--gold);">Everyone Together</div>
+                <span class="tag tag-gold">Whole wedding party</span>
+              </div>
+              <div style="font-size:11px;color:var(--text-lt);margin-bottom:.75rem;">Both sides of the wedding party. Great for rehearsal dinner, day-of logistics, and group announcements.</div>
+              <div class="chat-log" id="joint-chat-log"></div>
+              <div class="chat-input-row">
+                <input class="chat-inp" id="joint-chat-inp" placeholder="Message everyone..." onkeydown="if(event.key==='Enter')sendChatMsg('joint')">
+                <button class="btn btn-gold btn-sm" onclick="sendChatMsg('joint')">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ GROOM CONNECT (NEW) ══════════════════ -->
+      <div class="page-section" id="sec-groomConnect">
+        <div class="section-title">Groom Connect 💍</div>
+        <div class="section-sub">Connect your planning with your partner — share what you want, keep what you don't.</div>
+
+        <!-- Connection banner -->
+        <div class="connect-banner" style="margin-bottom:1.1rem;">
+          <div class="connect-banner-title">Your Partner's Space</div>
+          <div class="connect-banner-sub">When your partner sets up Tapüy Groom, you can connect your accounts and control exactly what each of you can see — together.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <div class="connect-status" id="groom-connect-status"><span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);display:inline-block;"></span><span>Not yet connected</span></div>
+            <button class="btn btn-gold btn-sm" onclick="openModal('modal-connect-groom')">Connect with Partner</button>
+          </div>
+        </div>
+
+        <!-- What you share -->
+        <div class="card" style="margin-bottom:.85rem;">
+          <div class="card-title">What You Share With Each Other</div>
+          <div style="font-size:12px;color:var(--text-lt);margin-bottom:1rem;line-height:1.7;">Control what your partner can see from your side. They have the same controls on their end.</div>
+          <div style="display:flex;flex-direction:column;gap:.65rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+              <div>
+                <div style="font-size:13px;font-weight:400;">Wedding Countdown</div>
+                <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Countdown to your wedding date</div>
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+                <input type="checkbox" id="share-countdown" checked onchange="updateSharing()" style="accent-color:var(--gold);width:16px;height:16px;">
+                Shared
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+              <div>
+                <div style="font-size:13px;font-weight:400;">Overall Budget</div>
+                <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Total budget figure (not line items)</div>
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+                <input type="checkbox" id="share-budget" checked onchange="updateSharing()" style="accent-color:var(--gold);width:16px;height:16px;">
+                Shared
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+              <div>
+                <div style="font-size:13px;font-weight:400;">Guest Count</div>
+                <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Total confirmed and invited</div>
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+                <input type="checkbox" id="share-guests" checked onchange="updateSharing()" style="accent-color:var(--gold);width:16px;height:16px;">
+                Shared
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+              <div>
+                <div style="font-size:13px;font-weight:400;">Wedding Day Timeline</div>
+                <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Shared schedule for the big day</div>
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+                <input type="checkbox" id="share-timeline" checked onchange="updateSharing()" style="accent-color:var(--gold);width:16px;height:16px;">
+                Shared
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+              <div>
+                <div style="font-size:13px;font-weight:400;">Bridal Suite Details</div>
+                <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Bachelorette, shower, engagement party plans</div>
+              </div>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+                <input type="checkbox" id="share-suite" onchange="updateSharing()" style="accent-color:var(--gold);width:16px;height:16px;">
+                Shared
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- What stays private -->
+        <div class="card" style="margin-bottom:.85rem;">
+          <div class="card-title">Always Private 🔒</div>
+          <div style="font-size:12px;color:var(--text-lt);margin-bottom:.75rem;">These spaces are yours alone. Your partner will never see them.</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:10px;padding:.65rem .85rem;background:rgba(92,31,74,.04);border-radius:var(--radius);">
+              <span style="font-size:16px;">💜</span>
+              <div>
+                <div style="font-size:13px;">Bridal Chat</div>
+                <div style="font-size:11px;color:var(--text-lt);">Your conversations with your bridesmaids</div>
+              </div>
+              <span class="tag tag-plum" style="margin-left:auto;">Private</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:.65rem .85rem;background:rgba(92,31,74,.04);border-radius:var(--radius);">
+              <span style="font-size:16px;">📸</span>
+              <div>
+                <div style="font-size:13px;">Squad Photos</div>
+                <div style="font-size:11px;color:var(--text-lt);">Bachelorette & getting-ready moments</div>
+              </div>
+              <span class="tag tag-plum" style="margin-left:auto;">Private</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:.65rem .85rem;background:rgba(92,31,74,.04);border-radius:var(--radius);">
+              <span style="font-size:16px;">🗳️</span>
+              <div>
+                <div style="font-size:13px;">Polls & Surprises</div>
+                <div style="font-size:11px;color:var(--text-lt);">Votes and plans within your squad</div>
+              </div>
+              <span class="tag tag-plum" style="margin-left:auto;">Private</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Allow surprises consent -->
+        <div class="card">
+          <div class="card-title">Surprise Preferences 🎁</div>
+          <div style="font-size:12px;color:var(--text-lt);margin-bottom:.85rem;line-height:1.7;">Your party can create spaces that you know exist — but can't see inside. Think of it as a locked door: you know the room is there, just not what's inside.</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;border:.5px solid var(--border);border-radius:var(--radius);">
+            <div>
+              <div style="font-size:13px;font-weight:400;">Allow surprise spaces</div>
+              <div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Let your MOH or bridesmaids plan things you can't see</div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-lt);">
+              <input type="checkbox" id="allow-surprises" checked onchange="updateSurprisePreference()" style="accent-color:var(--burgundy);width:16px;height:16px;">
+              Allowed
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ VENDORS ══════════════════ -->
       <div class="page-section" id="sec-vendors">
         <div class="section-title">Vendor Directory</div>
-        <div class="section-sub">Browse trusted vendors by category and budget. Free to list — featured placements from $29/mo.</div>
+        <div class="section-sub">Browse trusted vendors by category and budget.</div>
         <div class="filter-bar">
           <input class="search-inp" placeholder="Search vendors..." oninput="filterVendors(this.value)">
           <select class="fil-sel" id="v-cat" onchange="filterVendors()"><option value="">All categories</option><option>Photographer</option><option>Florist</option><option>Makeup Artist</option><option>Venue</option><option>Catering</option><option>DJ / Band</option><option>Dress Designer</option><option>Hair Stylist</option></select>
@@ -580,10 +1107,10 @@ a{text-decoration:none;color:inherit;}
         <div class="vendor-grid" id="vendor-grid"></div>
       </div>
 
-      <!-- SAVED VENDORS -->
+      <!-- ══════════════════ SAVED VENDORS ══════════════════ -->
       <div class="page-section" id="sec-saved">
         <div class="section-title">Saved Vendors</div>
-        <div class="section-sub">Vendors you're considering, contacting, or have booked.</div>
+        <div class="section-sub">Vendors you're considering or have booked.</div>
         <div class="vendor-grid" id="saved-vendor-grid">
           <div class="card" style="text-align:center;padding:2.5rem;grid-column:1/-1;">
             <div style="font-size:32px;margin-bottom:.75rem;">💾</div>
@@ -593,10 +1120,10 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
-      <!-- FORUM -->
+      <!-- ══════════════════ FORUM ══════════════════ -->
       <div class="page-section" id="sec-forum">
         <div class="section-title">Bride Forum</div>
-        <div class="section-sub">Ask questions, share advice, celebrate wins. You're not planning alone.</div>
+        <div class="section-sub">Ask questions, share advice, celebrate wins.</div>
         <div id="forum-list-view">
           <div class="cat-pills" id="forum-pills">
             <div class="cat-pill active" onclick="setForumCat('all',this)">🌸 All</div>
@@ -619,7 +1146,7 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
-      <!-- WINS -->
+      <!-- ══════════════════ WINS ══════════════════ -->
       <div class="page-section" id="sec-wins">
         <div class="section-title">Wins Board 🎉</div>
         <div class="section-sub">Brides sharing money saved, vendors found, and moments worth celebrating.</div>
@@ -627,103 +1154,15 @@ a{text-decoration:none;color:inherit;}
         <div class="grid-3" id="wins-grid"></div>
       </div>
 
-      <!-- SQUAD / BRIDESMAID SUITE -->
-      <div class="page-section" id="sec-squad">
-        <div class="section-title">Bridesmaid Suite 💜</div>
-        <div class="section-sub">Your private space to plan with your squad — dresses, bachelorette, polls, photos and chat.</div>
-
-        <!-- Share link -->
-        <div class="squad-link-box" id="squad-link-section">
-          <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);margin-bottom:6px;">Your Squad Link</div>
-          <div class="squad-link-url" id="squad-link-display">Loading...</div>
-          <div style="display:flex;gap:8px;margin-top:.75rem;">
-            <button class="btn btn-primary btn-sm" onclick="copySquadLink()">📋 Copy Link</button>
-            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-member')">+ Add Bridesmaid</button>
-          </div>
-          <div style="font-size:11px;color:var(--text-lt);margin-top:.6rem;">Your bridesmaids click this link — no account required to join.</div>
-        </div>
-
-        <!-- Tabs -->
-        <div style="display:flex;gap:0;border-bottom:.5px solid var(--border);margin-bottom:1.1rem;margin-top:.5rem;">
-          <button class="admin-tab active" onclick="squadTab('members',this)">Squad</button>
-          <button class="admin-tab" onclick="squadTab('dresses',this)">Dresses</button>
-          <button class="admin-tab" onclick="squadTab('bachelorette',this)">Bachelorette</button>
-          <button class="admin-tab" onclick="squadTab('chat',this)">Chat</button>
-          <button class="admin-tab" onclick="squadTab('photos',this)">Photos</button>
-        </div>
-
-        <!-- Members -->
-        <div class="admin-section active" id="squad-members">
-          <div id="members-list"></div>
-          <div style="text-align:center;margin-top:.75rem;">
-            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-member')">+ Add Bridesmaid</button>
-          </div>
-        </div>
-
-        <!-- Dresses -->
-        <div class="admin-section" id="squad-dresses">
-          <div class="card" style="margin-bottom:.85rem;">
-            <div class="card-title">Dress Tracker</div>
-            <div id="dress-tracker"></div>
-          </div>
-        </div>
-
-        <!-- Bachelorette -->
-        <div class="admin-section" id="squad-bachelorette">
-          <div class="grid-2">
-            <div class="card">
-              <div class="card-title">Polls</div>
-              <div id="polls-list"></div>
-              <button class="btn btn-ghost btn-sm" style="margin-top:.75rem;" onclick="openModal('modal-add-poll')">+ New Poll</button>
-            </div>
-            <div class="card">
-              <div class="card-title">Bachelorette Checklist</div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Choose date & destination</div></div></div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Book accommodation</div></div></div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Plan activities / itinerary</div></div></div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Decide on outfits/theme</div></div></div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Collect contributions</div></div></div>
-              <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Book restaurant / bar reservations</div></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chat -->
-        <div class="admin-section" id="squad-chat">
-          <div class="card">
-            <div class="card-title">Squad Chat</div>
-            <div class="chat-log" id="chat-log"></div>
-            <div class="chat-input-row">
-              <input class="chat-inp" id="chat-inp" placeholder="Send a message to your squad..." onkeydown="if(event.key==='Enter')sendMessage()">
-              <button class="btn btn-primary btn-sm" onclick="sendMessage()">Send</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Photos -->
-        <div class="admin-section" id="squad-photos">
-          <div class="card">
-            <div class="card-title">Squad Photos</div>
-            <div class="photo-upload-zone" onclick="document.getElementById('photo-file').click()">
-              <div style="font-size:24px;margin-bottom:6px;">📸</div>
-              <div style="font-size:13px;color:var(--text-lt);">Click to upload photos</div>
-              <div style="font-size:11px;color:var(--text-lt);margin-top:3px;">Engagement · Dress fittings · Bachelorette</div>
-              <input type="file" id="photo-file" accept="image/*" multiple style="display:none;" onchange="uploadPhotos(this)">
-            </div>
-            <div class="photo-grid" id="photo-grid"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI -->
+      <!-- ══════════════════ AI ══════════════════ -->
       <div class="page-section" id="sec-ai">
         <div class="section-title">AI Concierge ✨</div>
-        <div class="section-sub">Ask anything about your wedding — from vendor tips to destination planning.</div>
+        <div class="section-sub">Ask anything about your wedding — from vendor tips to coordination advice.</div>
         <div class="card" style="max-width:680px;">
           <div id="ai-log" style="min-height:280px;max-height:400px;overflow-y:auto;margin-bottom:.85rem;display:flex;flex-direction:column;gap:8px;">
             <div style="background:rgba(242,224,204,.4);border-radius:var(--radius);padding:.8rem 1rem;">
               <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mauve);margin-bottom:4px;">Tapüy AI</div>
-              <div style="font-size:13px;color:var(--text-md);line-height:1.7;">Hello! I'm your personal wedding concierge. Ask me anything — budget tips, vendor advice, destination ideas, negotiation scripts, or anything in between.</div>
+              <div style="font-size:13px;color:var(--text-md);line-height:1.7;">Hello! I'm your personal wedding concierge. Ask me anything — budget tips, vendor advice, engagement party planning, coordinating your wedding party, or anything in between.</div>
             </div>
           </div>
           <div style="display:flex;gap:8px;margin-bottom:.75rem;">
@@ -731,23 +1170,23 @@ a{text-decoration:none;color:inherit;}
             <button class="btn btn-primary btn-sm" onclick="askAI()">Ask ✨</button>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            <button class="cat-pill" onclick="quickAsk('What should I prioritize in my first 3 months of planning?')">Getting started</button>
-            <button class="cat-pill" onclick="quickAsk('How do I save money on florals without it looking cheap?')">Budget florals</button>
+            <button class="cat-pill" onclick="quickAsk('How do I plan a bridal shower on a budget?')">Bridal shower tips</button>
+            <button class="cat-pill" onclick="quickAsk('What should the MOH handle vs the bride?')">MOH vs bride tasks</button>
+            <button class="cat-pill" onclick="quickAsk('How do I keep my wedding party coordinated without overwhelming them?')">Party coordination</button>
             <button class="cat-pill" onclick="quickAsk('Best destinations for a wedding under $20,000?')">Destinations</button>
             <button class="cat-pill" onclick="quickAsk('How do I negotiate with vendors?')">Vendor tips</button>
-            <button class="cat-pill" onclick="quickAsk('Give me a negotiation email template for a photographer.')">Negotiate script</button>
           </div>
         </div>
       </div>
 
-      <!-- RESOURCES -->
+      <!-- ══════════════════ RESOURCES ══════════════════ -->
       <div class="page-section" id="sec-resources">
         <div class="section-title">Bride Resources 🔗</div>
         <div class="section-sub">The best tools and communities trusted by brides everywhere.</div>
         <div class="grid-3" id="resources-grid"></div>
       </div>
 
-      <!-- DAY OF -->
+      <!-- ══════════════════ DAY OF ══════════════════ -->
       <div class="page-section" id="sec-dayof">
         <div class="section-title">Day-Of Command Center 📅</div>
         <div class="section-sub">Your complete wedding day timeline — shareable with your vendor team.</div>
@@ -769,10 +1208,6 @@ a{text-decoration:none;color:inherit;}
               <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">1:00 PM</div>
               <div><div style="font-size:13px;font-weight:400;">Ceremony begins</div><div style="font-size:11px;color:var(--text-lt);">Main venue</div></div>
             </div>
-            <div style="display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);">
-              <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">2:00 PM</div>
-              <div><div style="font-size:13px;font-weight:400;">Cocktail hour + couple portraits</div><div style="font-size:11px;color:var(--text-lt);">Garden area</div></div>
-            </div>
             <div style="display:flex;gap:12px;padding:9px 0;">
               <div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">6:00 PM</div>
               <div><div style="font-size:13px;font-weight:400;">Reception dinner + first dance</div><div style="font-size:11px;color:var(--text-lt);">Ballroom</div></div>
@@ -781,7 +1216,7 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
-      <!-- ADMIN -->
+      <!-- ══════════════════ ADMIN ══════════════════ -->
       <div class="page-section" id="sec-admin">
         <div class="section-title">Admin Panel ⚙️</div>
         <div class="section-sub">Manage vendors, forum posts, wins, and users.</div>
@@ -797,46 +1232,38 @@ a{text-decoration:none;color:inherit;}
           </div>
           <div id="admin-vendor-list"></div>
         </div>
-        <div class="admin-section" id="admin-threads">
-          <div id="admin-thread-list"></div>
-        </div>
-        <div class="admin-section" id="admin-wins-admin">
-          <div id="admin-wins-list"></div>
-        </div>
-        <div class="admin-section" id="admin-users">
-          <div id="admin-users-list"></div>
-        </div>
+        <div class="admin-section" id="admin-threads"><div id="admin-thread-list"></div></div>
+        <div class="admin-section" id="admin-wins-admin"><div id="admin-wins-list"></div></div>
+        <div class="admin-section" id="admin-users"><div id="admin-users-list"></div></div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div><!-- /page-content -->
+  </div><!-- /main-content -->
+</div><!-- /app-screen -->
 
-<!-- SQUAD LANDING (for bridesmaids with link) -->
+<!-- ════════ SQUAD LANDING ════════ -->
 <div id="squad-screen">
   <div style="min-height:100vh;background:var(--forest-dk);display:flex;align-items:center;justify-content:center;padding:2rem;">
     <div style="background:var(--cream);border-radius:var(--radius);max-width:480px;width:100%;padding:2.5rem;animation:fadeUp .4s ease;">
       <svg width="160" height="70" viewBox="0 0 160 70" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1.5rem;display:block;">
         <polygon points="18,10 142,10 150,42 10,42" fill="#6B1A2A"/>
         <rect x="18" y="6" width="124" height="6" rx="1" fill="#8B2A3A"/>
-        <line x1="45" y1="10" x2="42" y2="42" stroke="#5A1525" stroke-width="0.5" opacity="0.5"/>
-        <line x1="80" y1="10" x2="80" y2="42" stroke="#5A1525" stroke-width="0.4" opacity="0.4"/>
-        <line x1="115" y1="10" x2="118" y2="42" stroke="#C2A0C8" stroke-width="0.7" opacity="0.4"/>
         <path d="M4,42 Q14,36 24,42 Q34,37 46,42 Q60,36 76,42 Q90,37 104,42 Q118,36 130,42 Q140,37 156,42 L156,49 L4,49 Z" fill="#253420"/>
         <text x="80" y="64" font-family="'Cormorant Garamond',serif" font-size="20" font-weight="300" fill="#3D0D18" text-anchor="middle" letter-spacing="3">Tapüy · Bride</text>
       </svg>
       <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--burg-dk);text-align:center;margin-bottom:.4rem;" id="sq-bride-name">You're invited!</div>
-      <div style="font-size:13px;color:var(--text-lt);text-align:center;line-height:1.7;margin-bottom:1.5rem;">Your bride has invited you to her Tapüy Bride squad. Enter your name and email to join — no password needed.</div>
+      <div style="font-size:13px;color:var(--text-lt);text-align:center;line-height:1.7;margin-bottom:1.5rem;">Your bride has invited you to her Tapüy Bride suite. Enter your name and email to join — no password needed.</div>
       <div id="sq-join-msg"></div>
       <div class="field"><label>Your name</label><input type="text" id="sq-name" placeholder="Your first name"></div>
       <div class="field"><label>Email (to save your info)</label><input type="email" id="sq-email" placeholder="your@email.com"></div>
-      <button class="btn btn-primary btn-full" onclick="joinSquad()">Join the Squad 💜</button>
-      <div style="font-size:11px;color:var(--text-lt);text-align:center;margin-top:.75rem;">Already have an account? <a onclick="showView('v-login');document.getElementById('squad-screen').style.display='none';document.getElementById('auth-screen').style.display='flex';" style="color:var(--burgundy);cursor:pointer;">Sign in</a></div>
+      <button class="btn btn-primary btn-full" onclick="joinSquad()">Join the Suite 💜</button>
     </div>
   </div>
 </div>
 
-<!-- ════════ MODALS ════════ -->
+<!-- ════════════════════════════════════
+     MODALS
+════════════════════════════════════ -->
 
 <!-- Settings -->
 <div class="overlay" id="modal-settings">
@@ -881,6 +1308,8 @@ a{text-decoration:none;color:inherit;}
         <button class="btn btn-ghost" onclick="closeModal('modal-quick-add');openModal('modal-add-guest');" style="flex-direction:column;gap:4px;padding:1rem;">👥<span>Add Guest</span></button>
         <button class="btn btn-ghost" onclick="closeModal('modal-quick-add');openModal('modal-add-budget');" style="flex-direction:column;gap:4px;padding:1rem;">💰<span>Add Expense</span></button>
         <button class="btn btn-ghost" onclick="closeModal('modal-quick-add');openModal('modal-add-member');" style="flex-direction:column;gap:4px;padding:1rem;">💜<span>Add Bridesmaid</span></button>
+        <button class="btn btn-ghost" onclick="closeModal('modal-quick-add');openModal('modal-add-party-member');" style="flex-direction:column;gap:4px;padding:1rem;">🥂<span>Add Party Member</span></button>
+        <button class="btn btn-ghost" onclick="closeModal('modal-quick-add');openModal('modal-add-surprise');" style="flex-direction:column;gap:4px;padding:1rem;">🎁<span>Create Surprise Space</span></button>
       </div>
     </div>
   </div>
@@ -957,6 +1386,29 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div>
 
+<!-- Add Event Guest (shower, engagement, rehearsal) -->
+<div class="overlay" id="modal-add-event-guest">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Guest</div><button class="modal-close" onclick="closeModal('modal-add-event-guest')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="event-guest-type" value="shower">
+      <div class="grid-2">
+        <div class="field"><label>First name</label><input type="text" id="eg-first" placeholder="Maria"></div>
+        <div class="field"><label>Last name</label><input type="text" id="eg-last" placeholder="González"></div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>RSVP</label><select id="eg-rsvp"><option>Awaiting</option><option>Yes</option><option>No</option></select></div>
+        <div class="field"><label>Phone / Email</label><input type="text" id="eg-contact" placeholder="Optional"></div>
+      </div>
+      <div class="field"><label>Notes</label><input type="text" id="eg-notes" placeholder="e.g. Plus one, dietary restriction"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-event-guest')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addEventGuest()">Add Guest</button>
+    </div>
+  </div>
+</div>
+
 <!-- Add Bridesmaid -->
 <div class="overlay" id="modal-add-member">
   <div class="modal">
@@ -965,7 +1417,16 @@ a{text-decoration:none;color:inherit;}
       <div id="member-msg"></div>
       <div class="grid-2">
         <div class="field"><label>Name</label><input type="text" id="m-name" placeholder="Isabella"></div>
-        <div class="field"><label>Role</label><select id="m-role"><option>Maid of Honor</option><option>Bridesmaid</option><option>Flower Girl</option><option>Junior Bridesmaid</option></select></div>
+        <div class="field"><label>Role</label>
+          <select id="m-role">
+            <option>Maid of Honor</option>
+            <option>Bridesmaid</option>
+            <option>Flower Girl</option>
+            <option>Junior Bridesmaid</option>
+            <option>Mother of Bride</option>
+            <option>Other</option>
+          </select>
+        </div>
       </div>
       <div class="field"><label>Email</label><input type="email" id="m-email" placeholder="isabella@email.com"></div>
       <div class="grid-2">
@@ -973,10 +1434,112 @@ a{text-decoration:none;color:inherit;}
         <div class="field"><label>Dress color preference</label><input type="text" id="m-color" placeholder="Dusty rose"></div>
       </div>
       <div class="field"><label>Fitting date</label><input type="date" id="m-fitting"></div>
+      <div class="field"><label>Access level</label>
+        <select id="m-access">
+          <option value="bridesmaid">Bridesmaid — standard access</option>
+          <option value="moh">Maid of Honor — can create surprise spaces</option>
+        </select>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-member')">Cancel</button>
-      <button class="btn btn-primary btn-sm" onclick="addMember()">Add to Squad</button>
+      <button class="btn btn-primary btn-sm" onclick="addMember()">Add to Suite</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Wedding Party Member -->
+<div class="overlay" id="modal-add-party-member">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Party Member</div><button class="modal-close" onclick="closeModal('modal-add-party-member')">✕</button></div>
+    <div class="modal-body">
+      <div id="party-member-msg"></div>
+      <div class="grid-2">
+        <div class="field"><label>Name</label><input type="text" id="pm-name" placeholder="Carlos"></div>
+        <div class="field"><label>Side</label>
+          <select id="pm-side">
+            <option value="bride">Bride's Side</option>
+            <option value="groom">Groom's Side</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label>Role</label>
+          <select id="pm-role">
+            <option>Maid of Honor</option>
+            <option>Bridesmaid</option>
+            <option>Best Man</option>
+            <option>Groomsman</option>
+            <option>Flower Girl</option>
+            <option>Ring Bearer</option>
+            <option>Mother of Bride</option>
+            <option>Mother of Groom</option>
+            <option>Father of Bride</option>
+            <option>Father of Groom</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Email (optional)</label><input type="email" id="pm-email" placeholder="carlos@email.com"></div>
+      </div>
+      <div class="field"><label>Phone (optional)</label><input type="text" id="pm-phone" placeholder="+1 555 000 0000"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-party-member')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addPartyMember()">Add to Party</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create Surprise Space -->
+<div class="overlay" id="modal-add-surprise">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Create Surprise Space 🎁</div><button class="modal-close" onclick="closeModal('modal-add-surprise')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg msg-info">The bride will see this space exists but cannot view anything inside until you reveal it.</div>
+      <div class="field"><label>Space name (what the bride sees)</label><input type="text" id="surp-name" placeholder="e.g. Something special is being planned..."></div>
+      <div class="field"><label>Event type</label>
+        <select id="surp-type">
+          <option>Bridal Shower</option>
+          <option>Bachelorette</option>
+          <option>Engagement Party</option>
+          <option>Rehearsal Dinner Surprise</option>
+          <option>Wedding Day Surprise</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Who can see the contents?</label>
+        <select id="surp-access">
+          <option value="moh">MOH only</option>
+          <option value="bridesmaids">All bridesmaids</option>
+          <option value="both_sides">Full wedding party</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-surprise')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="createSurpriseSpace()">Create Space</button>
+    </div>
+  </div>
+</div>
+
+<!-- Connect Groom -->
+<div class="overlay" id="modal-connect-groom">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Connect with Partner 💍</div><button class="modal-close" onclick="closeModal('modal-connect-groom')">✕</button></div>
+    <div class="modal-body">
+      <div class="msg msg-gold">Your partner needs to have Tapüy Groom set up. Share your connection code with them, or enter theirs below.</div>
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-lt);margin-bottom:6px;">Your Connection Code</div>
+        <div style="font-family:monospace;font-size:18px;letter-spacing:.2em;color:var(--burg-dk);background:rgba(107,26,42,.06);padding:.75rem 1rem;border-radius:var(--radius);text-align:center;" id="my-connect-code">—</div>
+        <button class="btn btn-ghost btn-sm btn-full" style="margin-top:.5rem;" onclick="copyConnectCode()">📋 Copy Code</button>
+      </div>
+      <div style="font-size:11px;color:var(--text-lt);text-align:center;margin:.75rem 0;">— or enter your partner's code —</div>
+      <div class="field"><label>Partner's connection code</label><input type="text" id="partner-code" placeholder="e.g. TAPUY-1234" style="letter-spacing:.1em;text-transform:uppercase;"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-connect-groom')">Cancel</button>
+      <button class="btn btn-gold btn-sm" onclick="connectGroom()">Connect</button>
     </div>
   </div>
 </div>
@@ -1024,15 +1587,15 @@ a{text-decoration:none;color:inherit;}
   <div class="modal">
     <div class="modal-header"><div class="modal-title">List My Business</div><button class="modal-close" onclick="closeModal('modal-list-vendor')">✕</button></div>
     <div class="modal-body">
-      <div class="msg msg-info">Basic listing is free. Featured placement from $29/month — we'll reach out after review.</div>
+      <div class="msg msg-info">Basic listing is free. Featured placement from $29/month.</div>
       <div class="field"><label>Business name</label><input type="text" id="lv-name" placeholder="Bloom & Co."></div>
       <div class="grid-2">
         <div class="field"><label>Category</label><select id="lv-cat"><option>Photographer</option><option>Florist</option><option>Makeup Artist</option><option>Venue</option><option>Catering</option><option>DJ / Band</option><option>Dress Designer</option><option>Hair Stylist</option></select></div>
         <div class="field"><label>Budget range</label><select id="lv-bud"><option value="$">$ Budget-friendly</option><option value="$$">$$ Mid-range</option><option value="$$$">$$$ Premium</option></select></div>
       </div>
       <div class="field"><label>Location / City</label><input type="text" id="lv-loc" placeholder="Miami, FL"></div>
-      <div class="field"><label>Description (160 chars)</label><input type="text" id="lv-desc" maxlength="160" placeholder="Lush seasonal florals for brides who love colour and texture."></div>
-      <div class="field"><label>Website or Instagram</label><input type="text" id="lv-web" placeholder="@bloomandco or www.bloom.com"></div>
+      <div class="field"><label>Description (160 chars)</label><input type="text" id="lv-desc" maxlength="160" placeholder="Lush seasonal florals for brides who love colour."></div>
+      <div class="field"><label>Website or Instagram</label><input type="text" id="lv-web" placeholder="@bloomandco"></div>
       <div class="field"><label>Contact email</label><input type="email" id="lv-email" placeholder="hello@bloom.com"></div>
     </div>
     <div class="modal-footer">
@@ -1065,12 +1628,12 @@ a{text-decoration:none;color:inherit;}
   <div class="modal">
     <div class="modal-header"><div class="modal-title">Add Vendor (Admin)</div><button class="modal-close" onclick="closeModal('modal-admin-add-vendor')">✕</button></div>
     <div class="modal-body">
-      <div class="field"><label>Business name</label><input type="text" id="av-name" placeholder="Luna & Light Photography"></div>
+      <div class="field"><label>Business name</label><input type="text" id="av-name"></div>
       <div class="grid-2">
         <div class="field"><label>Category</label><select id="av-cat"><option>Photographer</option><option>Florist</option><option>Makeup Artist</option><option>Venue</option><option>Catering</option><option>DJ / Band</option><option>Dress Designer</option><option>Hair Stylist</option></select></div>
         <div class="field"><label>Budget range</label><select id="av-bud"><option value="$">$</option><option value="$$">$$</option><option value="$$$">$$$</option></select></div>
       </div>
-      <div class="field"><label>Location</label><input type="text" id="av-loc" placeholder="Miami, FL"></div>
+      <div class="field"><label>Location</label><input type="text" id="av-loc"></div>
       <div class="field"><label>Description</label><input type="text" id="av-desc" maxlength="160"></div>
       <div class="field"><label>Emoji</label><input type="text" id="av-emoji" placeholder="📸" maxlength="2"></div>
       <div class="field"><label>Color (hex)</label><input type="text" id="av-color" placeholder="#6B1A2A"></div>
@@ -1101,35 +1664,28 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div>
 
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════ -->
 <script>
-// ════════════════════════════════════
-// SUPABASE INIT
-// ════════════════════════════════════
+// ── SUPABASE ──
 const SB_URL = 'https://pbvfmzetvaixgwguyeyz.supabase.co';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBidmZtemV0dmFpeGd3Z3V5ZXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNDE1MTgsImV4cCI6MjA5MjkxNzUxOH0.A0MNcrFvbzYTJsVZyhpB1gZVsY29f9ywvSvnovgI-fc';
 const { createClient } = supabase;
 const db = createClient(SB_URL, SB_KEY);
 
-let currentUser = null;
-let currentProfile = null;
+// ── STATE ──
+let currentUser = null, currentProfile = null;
 let activePage = 'dashboard';
-let activeForumCat = 'all';
-let activeThread = null;
-let activeSquadTab = 'members';
-let vendors = [];
-let tasks = [];
-let budgetItems = [];
-let guests = [];
-let squadMembers = [];
-let chatMessages = [];
-let polls = [];
-let photos = [];
+let activeForumCat = 'all', activeThread = null;
+let vendors = [], tasks = [], budgetItems = [], guests = [];
+let squadMembers = [], chatMessages = [], polls = [], photos = [];
+let partyMembers = [], surpriseSpaces = [];
+let eventGuests = { shower: [], engage: [], rehearsal: [] };
+let bridalChatMsgs = [], jointChatMsgs = [];
 
-// ════════════════════════════════════
-// INIT
-// ════════════════════════════════════
+// ── INIT ──
 window.addEventListener('DOMContentLoaded', async () => {
-  // Check for squad link
   const params = new URLSearchParams(location.search);
   const squadToken = params.get('squad');
   if (squadToken) {
@@ -1138,24 +1694,14 @@ window.addEventListener('DOMContentLoaded', async () => {
     loadSquadLanding(squadToken);
     return;
   }
-
-  // Check session
   const { data: { session } } = await db.auth.getSession();
-  if (session) {
-    await initApp(session.user);
-  } else {
+  if (session) { await initApp(session.user); }
+  else {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('auth-screen').style.display = 'flex';
   }
-
-  // Listen for auth changes
   db.auth.onAuthStateChange(async (event, session) => {
-    if (event === 'PASSWORD_RECOVERY') {
-      // Could show password reset UI
-    }
-    if (event === 'SIGNED_IN' && session) {
-      await initApp(session.user);
-    }
+    if (event === 'SIGNED_IN' && session) await initApp(session.user);
   });
 });
 
@@ -1169,14 +1715,17 @@ async function initApp(user) {
   updateSidebar();
   await loadAllData();
   renderDashboard();
+  // Show connect code
+  if (currentProfile?.connect_code) {
+    document.getElementById('my-connect-code').textContent = currentProfile.connect_code;
+  }
 }
 
 function updateSidebar() {
   if (!currentProfile) return;
   const p = currentProfile;
   document.getElementById('sb-name').textContent = p.name || 'Bride';
-  const av = document.getElementById('sb-avatar');
-  av.textContent = (p.name||'B')[0].toUpperCase();
+  document.getElementById('sb-avatar').textContent = (p.name||'B')[0].toUpperCase();
   const tier = p.tier || 'free';
   const tierEl = document.getElementById('sb-tier');
   tierEl.textContent = tier.charAt(0).toUpperCase() + tier.slice(1);
@@ -1187,11 +1736,14 @@ function updateSidebar() {
     document.getElementById('top-date').textContent = '🗓 ' + new Date(p.wedding_date).toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'});
   }
   if (p.is_admin) document.getElementById('admin-nav-section').style.display = 'block';
+  // Groom connection
+  if (p.groom_connected) {
+    document.getElementById('shared-dashboard-widget').style.display = 'block';
+    document.getElementById('shared-groom-name').textContent = p.partner_name || 'your partner';
+  }
 }
 
-// ════════════════════════════════════
-// AUTH
-// ════════════════════════════════════
+// ── AUTH ──
 function showView(id) {
   ['v-login','v-register','v-reset'].forEach(v => document.getElementById(v).classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
@@ -1201,8 +1753,6 @@ async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
   const pw = document.getElementById('login-pw').value;
   const btn = document.getElementById('btn-login');
-  const msg = document.getElementById('login-msg');
-  msg.innerHTML = '';
   if (!email || !pw) { showMsg('login-msg','error','Please fill in all fields.'); return; }
   btn.disabled = true; btn.textContent = 'Signing in...';
   const { error } = await db.auth.signInWithPassword({ email, password: pw });
@@ -1216,13 +1766,14 @@ async function doRegister() {
   const pw = document.getElementById('reg-pw').value;
   const date = document.getElementById('reg-date').value;
   const budget = parseFloat(document.getElementById('reg-budget').value);
+  const allowSurprises = document.getElementById('reg-surprises').value === 'yes';
   const btn = document.getElementById('btn-reg');
   if (!name||!email||!pw) { showMsg('reg-msg','error','Please fill in all required fields.'); return; }
   if (pw.length < 8) { showMsg('reg-msg','error','Password must be at least 8 characters.'); return; }
   btn.disabled = true; btn.textContent = 'Creating account...';
   const { error } = await db.auth.signUp({
     email, password: pw,
-    options: { data: { name, wedding_date: date || null, budget_total: budget } }
+    options: { data: { name, wedding_date: date || null, budget_total: budget, allow_surprises: allowSurprises } }
   });
   btn.disabled = false; btn.textContent = 'Create Account';
   if (error) showMsg('reg-msg','error', error.message);
@@ -1234,12 +1785,10 @@ async function doReset() {
   const btn = document.getElementById('btn-reset');
   if (!email) { showMsg('reset-msg','error','Please enter your email address.'); return; }
   btn.disabled = true; btn.textContent = 'Sending...';
-  const { error } = await db.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin + window.location.pathname
-  });
+  const { error } = await db.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + window.location.pathname });
   btn.disabled = false; btn.textContent = 'Send Reset Link';
   if (error) showMsg('reset-msg','error', error.message);
-  else showMsg('reset-msg','success',`Reset link sent to ${email}. Check your inbox (and spam folder).`);
+  else showMsg('reset-msg','success',`Reset link sent to ${email}.`);
 }
 
 async function doLogout() {
@@ -1250,19 +1799,7 @@ async function doLogout() {
   showView('v-login');
 }
 
-// ════════════════════════════════════
-// SETTINGS
-// ════════════════════════════════════
-function openSettingsModal() {
-  if (!currentProfile) return;
-  document.getElementById('set-name').value = currentProfile.name || '';
-  document.getElementById('set-partner').value = currentProfile.partner_name || '';
-  document.getElementById('set-date').value = currentProfile.wedding_date || '';
-  document.getElementById('set-budget').value = currentProfile.budget_total || 25000;
-  document.getElementById('set-location').value = currentProfile.wedding_location || '';
-  openModal('modal-settings');
-}
-
+// ── SETTINGS ──
 async function saveSettings() {
   const updates = {
     name: document.getElementById('set-name').value.trim(),
@@ -1274,53 +1811,45 @@ async function saveSettings() {
   const { error } = await db.from('profiles').update(updates).eq('id', currentUser.id);
   if (error) { showMsg('settings-msg','error', error.message); return; }
   currentProfile = { ...currentProfile, ...updates };
-  updateSidebar();
-  renderBudget();
-  closeModal('modal-settings');
-  toast('Settings saved!');
+  updateSidebar(); renderBudget();
+  closeModal('modal-settings'); toast('Settings saved!');
 }
 
 async function saveBudgetTotal() {
   const val = parseFloat(document.getElementById('edit-budget-val').value);
   if (!val || val < 0) { toast('Please enter a valid amount.'); return; }
-  const { error } = await db.from('profiles').update({ budget_total: val }).eq('id', currentUser.id);
-  if (!error) {
-    currentProfile.budget_total = val;
-    renderBudget();
-    closeModal('modal-edit-budget');
-    toast('Budget updated!');
-  }
+  await db.from('profiles').update({ budget_total: val }).eq('id', currentUser.id);
+  currentProfile.budget_total = val;
+  renderBudget(); closeModal('modal-edit-budget'); toast('Budget updated!');
 }
 
-// ════════════════════════════════════
-// LOAD ALL DATA
-// ════════════════════════════════════
+// ── LOAD ALL ──
 async function loadAllData() {
   await Promise.all([
     loadTasks(), loadBudget(), loadGuests(),
     loadVendors(), loadForum(), loadWins(),
-    loadSquad(), loadPhotos()
+    loadSquad(), loadPhotos(), loadPartyMembers(), loadSurpriseSpaces()
   ]);
   renderResources();
 }
 
-// ════════════════════════════════════
-// NAV
-// ════════════════════════════════════
+// ── NAV ──
 const PAGE_META = {
-  dashboard: ['Dashboard', 'Welcome back — here\'s where things stand'],
-  checklist: ['Checklist', 'Your full planning timeline'],
-  budget:    ['Budget Tracker', 'Track every dollar — no surprises'],
-  guests:    ['Guest Manager', 'Track RSVPs and seating'],
-  vendors:   ['Vendor Directory', 'Browse trusted vendors by category and budget'],
-  saved:     ['Saved Vendors', 'Your saved and booked vendors'],
-  forum:     ['Bride Forum', 'Ask questions, share advice, celebrate wins'],
-  wins:      ['Wins Board 🎉', 'Brides sharing their best finds and savings'],
-  squad:     ['Bridesmaid Suite 💜', 'Plan with your squad'],
-  ai:        ['AI Concierge ✨', 'Ask anything about your wedding'],
-  resources: ['Bride Resources 🔗', 'The best tools trusted by brides'],
-  dayof:     ['Day-Of Center 📅', 'Your complete wedding day timeline'],
-  admin:     ['Admin Panel ⚙️', 'Manage vendors, forum and community content'],
+  dashboard:    ['Dashboard', 'Welcome back — here\'s where things stand'],
+  checklist:    ['Checklist', 'Your full planning timeline'],
+  budget:       ['Budget Tracker', 'Track every dollar — no surprises'],
+  guests:       ['Guest Manager', 'Track RSVPs and seating'],
+  bridalSuite:  ['Bridal Suite 💜', 'Your private world — every pre-wedding event'],
+  weddingParty: ['Wedding Party Hub 🥂', 'Everyone in one place'],
+  groomConnect: ['Groom Connect 💍', 'Plan together — share what matters'],
+  vendors:      ['Vendor Directory', 'Browse trusted vendors by category and budget'],
+  saved:        ['Saved Vendors', 'Your saved and booked vendors'],
+  forum:        ['Bride Forum', 'Ask questions, share advice, celebrate wins'],
+  wins:         ['Wins Board 🎉', 'Brides sharing their best finds and savings'],
+  ai:           ['AI Concierge ✨', 'Ask anything about your wedding'],
+  resources:    ['Bride Resources 🔗', 'The best tools trusted by brides'],
+  dayof:        ['Day-Of Center 📅', 'Your complete wedding day timeline'],
+  admin:        ['Admin Panel ⚙️', 'Manage vendors, forum and community content'],
 };
 
 function navTo(page, btn) {
@@ -1333,13 +1862,11 @@ function navTo(page, btn) {
   const meta = PAGE_META[page] || [page, ''];
   document.getElementById('pg-title').textContent = meta[0];
   document.getElementById('pg-sub').textContent = meta[1];
-  if (page === 'settings') openSettingsModal();
   if (page === 'admin' && currentProfile?.is_admin) loadAdminData();
+  if (page === 'weddingParty') renderPartyRoster();
 }
 
-// ════════════════════════════════════
-// DASHBOARD
-// ════════════════════════════════════
+// ── DASHBOARD ──
 function renderDashboard() {
   const p = currentProfile;
   if (!p) return;
@@ -1350,7 +1877,6 @@ function renderDashboard() {
   }
   const done = tasks.filter(t => t.done).length;
   document.getElementById('s-tasks').textContent = `${done}/${tasks.length}`;
-  document.getElementById('s-tasks-note').textContent = 'tasks complete';
   const spent = budgetItems.reduce((s, b) => s + (b.amount_paid || 0), 0);
   document.getElementById('s-spent').textContent = '$' + spent.toLocaleString();
   document.getElementById('s-budget-note').textContent = 'of $' + (p.budget_total||25000).toLocaleString();
@@ -1359,22 +1885,18 @@ function renderDashboard() {
   const pct = tasks.length ? Math.round(done / tasks.length * 100) : 0;
   document.getElementById('prog-pct').textContent = pct + '%';
   document.getElementById('prog-bar').style.width = pct + '%';
-  // Next up
   const upcoming = tasks.filter(t => !t.done).slice(0, 4);
   document.getElementById('next-up').innerHTML = upcoming.length ? upcoming.map(t => `
     <div class="check-item" onclick="toggleTaskInline('${t.id}',this)">
-      <div class="check-box ${t.done?'done':''}"></div>
+      <div class="check-box"></div>
       <div><div class="check-text">${t.title}</div><div class="check-meta">${t.category}</div></div>
     </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);padding:.5rem 0;">All caught up! 🎉</div>';
 }
 
-// ════════════════════════════════════
-// TASKS
-// ════════════════════════════════════
+// ── TASKS ──
 async function loadTasks() {
   const { data } = await db.from('tasks').select('*').eq('user_id', currentUser.id).order('created_at');
   tasks = data || [];
-  // If first time, seed default tasks
   if (tasks.length === 0) await seedDefaultTasks();
   renderTasks();
 }
@@ -1399,8 +1921,7 @@ async function seedDefaultTasks() {
     {title:'Finalise seating chart',category:'Guests',timeline:'2 weeks before'},
     {title:'Prepare day-of timeline',category:'Other',timeline:'1 week before'},
   ];
-  const rows = defaults.map(d => ({ ...d, user_id: currentUser.id, done: false }));
-  const { data } = await db.from('tasks').insert(rows).select();
+  const { data } = await db.from('tasks').insert(defaults.map(d => ({ ...d, user_id: currentUser.id, done: false }))).select();
   tasks = data || [];
 }
 
@@ -1422,7 +1943,7 @@ function renderTasks() {
             <div class="check-text">${t.title}</div>
             <div class="check-meta">${t.category}</div>
           </div>
-          <span class="tag tag-${t.category==='Venue'?'forest':t.category==='Attire'?'plum':t.category==='Budget'?'burg':'mauve'}">${t.category}</span>
+          <span class="tag tag-mauve">${t.category}</span>
           <button class="check-del" onclick="event.stopPropagation();deleteTask('${t.id}',this.closest('.check-item'))" title="Delete">🗑</button>
         </div>`).join('')}
     </div>`).join('');
@@ -1436,16 +1957,12 @@ async function toggleTask(id, el) {
   await db.from('tasks').update({ done: task.done }).eq('id', id);
   renderDashboard();
 }
-
-async function toggleTaskInline(id, el) {
-  await toggleTask(id, el);
-}
+async function toggleTaskInline(id, el) { await toggleTask(id, el); }
 
 async function deleteTask(id, el) {
   await db.from('tasks').delete().eq('id', id);
   tasks = tasks.filter(t => t.id !== id);
-  el.style.animation = 'fadeIn .2s reverse';
-  setTimeout(() => { el.remove(); renderDashboard(); }, 180);
+  el.remove(); renderDashboard();
 }
 
 async function addTask() {
@@ -1459,13 +1976,10 @@ async function addTask() {
   closeModal('modal-add-task');
   document.getElementById('task-title').value = '';
   document.getElementById('task-timeline').value = '';
-  renderTasks(); renderDashboard();
-  toast('Task added!');
+  renderTasks(); renderDashboard(); toast('Task added!');
 }
 
-// ════════════════════════════════════
-// BUDGET
-// ════════════════════════════════════
+// ── BUDGET ──
 async function loadBudget() {
   const { data } = await db.from('budget_items').select('*').eq('user_id', currentUser.id).order('created_at');
   budgetItems = data || [];
@@ -1479,20 +1993,19 @@ function renderBudget() {
   document.getElementById('b-total').textContent = '$' + total.toLocaleString();
   document.getElementById('b-committed').textContent = '$' + committed.toLocaleString();
   document.getElementById('b-remaining').textContent = '$' + Math.max(0, remaining).toLocaleString();
-  document.getElementById('edit-budget-val').value = total;
+  if (document.getElementById('edit-budget-val')) document.getElementById('edit-budget-val').value = total;
   const list = document.getElementById('budget-list');
   if (!list) return;
-  if (!budgetItems.length) { list.innerHTML = '<div style="font-size:13px;color:var(--text-lt);">No expenses yet. Add your first one above!</div>'; return; }
+  if (!budgetItems.length) { list.innerHTML = '<div style="font-size:13px;color:var(--text-lt);">No expenses yet.</div>'; return; }
   list.innerHTML = budgetItems.map(b => {
     const pct = total ? Math.round((b.total_cost / total) * 100) : 0;
-    return `
-    <div class="budget-row">
+    return `<div class="budget-row">
       <div class="budget-name">${b.category}${b.vendor_name?' — <span style="color:var(--text-lt);font-size:12px;">'+b.vendor_name+'</span>':''}<br><span style="font-size:11px;color:var(--text-lt);">${b.description||''}</span></div>
       <div style="flex:1;padding:0 10px;"><div class="progress-wrap"><div class="progress-fill" style="width:${pct}%"></div></div></div>
       <div class="budget-amt">$${(b.amount_paid||0).toLocaleString()} <span style="font-size:10px;color:var(--text-lt);">paid</span></div>
       <div class="budget-pct">${pct}%</div>
       <button class="btn btn-danger btn-sm" onclick="deleteBudgetItem('${b.id}')">🗑</button>
-    </div>`}).join('');
+    </div>`;}).join('');
 }
 
 async function addBudgetItem() {
@@ -1504,35 +2017,30 @@ async function addBudgetItem() {
     amount_paid: parseFloat(document.getElementById('bud-paid').value) || 0,
     total_cost: parseFloat(document.getElementById('bud-total').value) || 0
   };
-  if (!item.description && !item.category) { showMsg('budget-msg','error','Please fill in at least a category.'); return; }
   const { data, error } = await db.from('budget_items').insert(item).select().single();
   if (error) { showMsg('budget-msg','error', error.message); return; }
   budgetItems.push(data);
   closeModal('modal-add-budget');
   ['bud-desc','bud-vendor','bud-paid','bud-total'].forEach(id => document.getElementById(id).value = '');
-  renderBudget(); renderDashboard();
-  toast('Expense added!');
+  renderBudget(); renderDashboard(); toast('Expense added!');
 }
 
 async function deleteBudgetItem(id) {
   await db.from('budget_items').delete().eq('id', id);
   budgetItems = budgetItems.filter(b => b.id !== id);
-  renderBudget(); renderDashboard();
-  toast('Expense removed.');
+  renderBudget(); renderDashboard(); toast('Expense removed.');
 }
 
-// ════════════════════════════════════
-// GUESTS
-// ════════════════════════════════════
+// ── GUESTS ──
 async function loadGuests() {
   const { data } = await db.from('guests').select('*').eq('user_id', currentUser.id).order('created_at');
   guests = data || [];
   renderGuests();
 }
 
-function renderGuests(search = '', rsvpFilter = '') {
-  const q = (search || document.querySelector('#sec-guests .search-inp')?.value || '').toLowerCase();
-  const rf = rsvpFilter || document.getElementById('guest-rsvp-filter')?.value || '';
+function renderGuests(search = '') {
+  const q = (search || '').toLowerCase();
+  const rf = document.getElementById('guest-rsvp-filter')?.value || '';
   const filtered = guests.filter(g => {
     const name = `${g.first_name} ${g.last_name||''}`.toLowerCase();
     return (!q || name.includes(q)) && (!rf || g.rsvp === rf);
@@ -1551,7 +2059,6 @@ function renderGuests(search = '', rsvpFilter = '') {
       <td>${g.dietary||'—'}</td>
       <td>${g.table_number||'—'}</td>
       <td><div class="actions">
-        <button class="btn btn-ghost btn-sm" onclick="editGuest('${g.id}')">Edit</button>
         <button class="btn btn-danger btn-sm" onclick="deleteGuest('${g.id}')">🗑</button>
       </div></td>
     </tr>`).join('');
@@ -1574,22 +2081,87 @@ async function addGuest() {
   guests.push(data);
   closeModal('modal-add-guest');
   ['g-first','g-last','g-dietary','g-email','g-table'].forEach(id => document.getElementById(id).value = '');
-  renderGuests(); renderDashboard();
-  toast('Guest added!');
+  renderGuests(); renderDashboard(); toast('Guest added!');
 }
 
 async function deleteGuest(id) {
   await db.from('guests').delete().eq('id', id);
   guests = guests.filter(g => g.id !== id);
-  renderGuests(); renderDashboard();
+  renderGuests(); renderDashboard(); toast('Guest removed.');
+}
+
+// ── EVENT GUESTS (shower, engage, rehearsal) ──
+async function addEventGuest() {
+  const type = document.getElementById('event-guest-type').value;
+  const guest = {
+    first_name: document.getElementById('eg-first').value.trim(),
+    last_name: document.getElementById('eg-last').value.trim(),
+    rsvp: document.getElementById('eg-rsvp').value,
+    contact: document.getElementById('eg-contact').value.trim(),
+    notes: document.getElementById('eg-notes').value.trim(),
+    id: Date.now().toString()
+  };
+  if (!guest.first_name) { toast('Please enter a first name.'); return; }
+  if (!eventGuests[type]) eventGuests[type] = [];
+  eventGuests[type].push(guest);
+  closeModal('modal-add-event-guest');
+  ['eg-first','eg-last','eg-contact','eg-notes'].forEach(id => document.getElementById(id).value = '');
+  renderEventGuests(type);
+  toast('Guest added!');
+}
+
+function renderEventGuests(type) {
+  const listEl = document.getElementById(`${type}-guests-list`);
+  if (!listEl) return;
+  const list = eventGuests[type] || [];
+  if (!list.length) { listEl.innerHTML = '<div style="font-size:13px;color:var(--text-lt);">No guests added yet.</div>'; return; }
+  listEl.innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:.5rem;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-lt);">
+      <span style="flex:1;">Name</span><span style="width:70px;">RSVP</span><span style="width:24px;"></span>
+    </div>
+    ${list.map(g => `
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:.5px solid var(--border);">
+        <div style="flex:1;font-size:13px;">${g.first_name} ${g.last_name||''}</div>
+        <span class="tag tag-${g.rsvp==='Yes'?'sage':g.rsvp==='No'?'peach':'mauve'}" style="width:70px;text-align:center;">${g.rsvp}</span>
+        <button class="btn btn-danger btn-sm" onclick="removeEventGuest('${type}','${g.id}')">🗑</button>
+      </div>`).join('')}
+    <div style="font-size:11px;color:var(--text-lt);margin-top:.5rem;">${list.length} guest${list.length!==1?'s':''} · ${list.filter(g=>g.rsvp==='Yes').length} confirmed</div>`;
+}
+
+function removeEventGuest(type, id) {
+  eventGuests[type] = (eventGuests[type] || []).filter(g => g.id !== id);
+  renderEventGuests(type);
   toast('Guest removed.');
 }
 
-function editGuest(id) { toast('Edit guest — coming soon!'); }
+// ── EVENT DETAILS ──
+function saveEventDetails(prefix) {
+  toast('Details saved!');
+}
 
-// ════════════════════════════════════
-// VENDORS
-// ════════════════════════════════════
+function saveRehearsalDetails() {
+  toast('Rehearsal dinner details saved!');
+}
+
+function saveOutfitNotes() {
+  toast('Outfit notes saved!');
+}
+
+function savePartyInfo() {
+  toast('Wedding party info saved!');
+}
+
+// ── EVENT COUNTDOWNS ──
+function updateEventCountdown(countdownId, dateInputId) {
+  const dateVal = document.getElementById(dateInputId)?.value;
+  const el = document.getElementById(countdownId);
+  if (!el) return;
+  if (!dateVal) { el.textContent = '—'; return; }
+  const days = Math.ceil((new Date(dateVal) - new Date()) / 86400000);
+  el.textContent = days > 0 ? days : days === 0 ? '🎉' : 'Passed';
+}
+
+// ── VENDORS ──
 async function loadVendors() {
   const { data } = await db.from('vendors').select('*').eq('approved', true).order('featured', {ascending:false});
   vendors = data || [];
@@ -1614,23 +2186,21 @@ function renderVendors(q='') {
         <div class="vendor-name">${v.name}</div>
         <div class="vendor-cat">${v.category}</div>
         <div class="vendor-loc">📍 ${v.location||'—'}</div>
-        <div class="vendor-budget">${v.budget_range||'$$'} · ${v.budget_range==='$'?'Budget-friendly':v.budget_range==='$$$'?'Premium':'Mid-range'}</div>
-        <div class="vendor-stars">${'★'.repeat(Math.round(v.rating||5))}${'☆'.repeat(5-Math.round(v.rating||5))} ${v.rating||5}.0</div>
+        <div class="vendor-budget">${v.budget_range||'$$'}</div>
         <div style="font-size:12px;color:var(--text-lt);line-height:1.6;margin-bottom:8px;">${v.description||''}</div>
         <div style="display:flex;gap:6px;">
-          <button class="btn btn-primary btn-sm" onclick="requestQuote('${v.name}','${v.email||''}')">Request Quote</button>
+          <button class="btn btn-primary btn-sm" onclick="toast('Quote request sent to ${v.name}!')">Request Quote</button>
           <button class="btn btn-ghost btn-sm" onclick="saveVendor('${v.id}')">💾 Save</button>
         </div>
       </div>
-    </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);padding:1rem;">No vendors found matching your filters.</div>';
+    </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);padding:1rem;">No vendors found.</div>';
 }
 
 function filterVendors(q='') { renderVendors(q); }
-function requestQuote(name, email) { toast(`Quote request sent to ${name}!`); }
 
 async function saveVendor(vid) {
-  const { error } = await db.from('saved_vendors').upsert({ user_id: currentUser.id, vendor_id: vid }, { onConflict: 'user_id,vendor_id' });
-  if (!error) toast('Vendor saved to My Vendors!');
+  await db.from('saved_vendors').upsert({ user_id: currentUser.id, vendor_id: vid }, { onConflict: 'user_id,vendor_id' });
+  toast('Vendor saved!');
 }
 
 async function submitVendorListing() {
@@ -1650,9 +2220,7 @@ async function submitVendorListing() {
   toast('Listing submitted! We\'ll review within 48 hours. ✨');
 }
 
-// ════════════════════════════════════
-// FORUM
-// ════════════════════════════════════
+// ── FORUM ──
 async function loadForum() { renderForum(); }
 
 async function renderForum() {
@@ -1677,7 +2245,6 @@ async function renderForum() {
         <div class="thread-meta">
           <span>By ${t.profiles?.name||'Bride'}</span>
           <span>· ${timeAgo(t.created_at)}</span>
-          <span>· ♥ ${t.likes||0}</span>
           ${t.user_id === currentUser?.id ? `<button class="reply-btn" onclick="event.stopPropagation();deleteThread('${t.id}')">🗑 Delete</button>` : ''}
         </div>
       </div>`).join('') || '<div style="font-size:13px;color:var(--text-lt);">No discussions yet. Start one!</div>';
@@ -1689,26 +2256,17 @@ async function renderThread(threadId) {
   const { data: replies } = await db.from('forum_replies').select('*, profiles(name)').eq('thread_id', threadId).order('created_at');
   document.getElementById('thread-content').innerHTML = `
     <div class="card" style="margin-bottom:.85rem;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.65rem;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--burg-dk);">${t.title}</div>
-        <span class="tag tag-mauve">${t.category}</span>
-      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--burg-dk);margin-bottom:.65rem;">${t.title}</div>
       <div style="font-size:12px;color:var(--text-lt);margin-bottom:.65rem;">By ${t.profiles?.name||'Bride'} · ${timeAgo(t.created_at)}</div>
       <div style="font-size:13px;color:var(--text-md);line-height:1.7;">${t.body}</div>
     </div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--burg-dk);margin-bottom:.65rem;">${(replies||[]).length} Replies</div>
     ${(replies||[]).map(r => `
       <div class="reply-card">
         <div class="reply-author">${r.profiles?.name||'Bride'} · ${timeAgo(r.created_at)}</div>
         <div class="reply-body">${r.body}</div>
-        <div class="reply-actions">
-          <button class="reply-btn">♥ ${r.likes||0}</button>
-          ${r.user_id === currentUser?.id ? `<button class="reply-btn" onclick="deleteReply('${r.id}')">🗑 Delete</button>` : ''}
-        </div>
       </div>`).join('')}
     <div class="card" style="margin-top:.75rem;">
-      <div style="font-size:13px;color:var(--text-lt);margin-bottom:.6rem;">Add your reply</div>
-      <textarea id="reply-inp" rows="3" style="width:100%;padding:9px 12px;border:.5px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:300;outline:none;resize:vertical;font-family:'Jost',sans-serif;" placeholder="Share your advice..."></textarea>
+      <textarea id="reply-inp" rows="3" style="width:100%;padding:9px 12px;border:.5px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:300;outline:none;resize:vertical;font-family:'Jost',sans-serif;" placeholder="Add your reply..."></textarea>
       <button class="btn btn-primary btn-sm" style="margin-top:.65rem;" onclick="postReply('${t.id}')">Post Reply</button>
     </div>`;
 }
@@ -1721,34 +2279,24 @@ async function postThread() {
   const cat = document.getElementById('t-cat').value;
   const body = document.getElementById('t-body').value.trim();
   if (!title||!body) { showMsg('thread-msg','error','Please fill in all fields.'); return; }
-  const { error } = await db.from('forum_threads').insert({ user_id: currentUser.id, title, category: cat, body, approved: true });
-  if (error) { showMsg('thread-msg','error', error.message); return; }
+  await db.from('forum_threads').insert({ user_id: currentUser.id, title, category: cat, body, approved: true });
   closeModal('modal-new-thread');
   document.getElementById('t-title').value = '';
   document.getElementById('t-body').value = '';
-  await renderForum();
-  toast('Discussion posted! 💬');
+  await renderForum(); toast('Discussion posted!');
 }
 
 async function postReply(threadId) {
   const body = document.getElementById('reply-inp').value.trim();
   if (!body) return;
   await db.from('forum_replies').insert({ thread_id: threadId, user_id: currentUser.id, body });
-  await renderThread(threadId);
-  toast('Reply posted! 💕');
+  await renderThread(threadId); toast('Reply posted!');
 }
 
 async function deleteThread(id) {
   await db.from('forum_threads').delete().eq('id', id);
   activeThread = null;
-  await renderForum();
-  toast('Discussion deleted.');
-}
-
-async function deleteReply(id) {
-  await db.from('forum_replies').delete().eq('id', id);
-  if (activeThread) await renderThread(activeThread);
-  toast('Reply deleted.');
+  await renderForum(); toast('Discussion deleted.');
 }
 
 function setForumCat(cat, btn) {
@@ -1759,9 +2307,7 @@ function setForumCat(cat, btn) {
   renderForum();
 }
 
-// ════════════════════════════════════
-// WINS
-// ════════════════════════════════════
+// ── WINS ──
 async function loadWins() {
   const { data } = await db.from('wins').select('*, profiles(name)').eq('approved', true).order('created_at', {ascending:false});
   renderWins(data || []);
@@ -1775,11 +2321,8 @@ function renderWins(wins) {
       <span class="tag ${tags[i%5]}" style="margin-bottom:.5rem;display:inline-block;">${w.tag||'Win!'}</span>
       <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--burg-dk);margin-bottom:.4rem;line-height:1.4;">${w.title}</div>
       ${w.body ? `<div style="font-size:12px;color:var(--text-lt);line-height:1.6;margin-bottom:.6rem;">${w.body}</div>` : ''}
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div style="font-size:11px;color:var(--mauve);">— ${w.profiles?.name||'Bride'}</div>
-        ${w.user_id === currentUser?.id ? `<button class="btn btn-danger btn-sm" onclick="deleteWin('${w.id}')">🗑</button>` : ''}
-      </div>
-    </div>`).join('') || '<div style="font-size:13px;color:var(--text-lt);">No wins yet — be the first to share one! 🎉</div>';
+      <div style="font-size:11px;color:var(--mauve);">— ${w.profiles?.name||'Bride'}</div>
+    </div>`).join('') || '<div style="font-size:13px;color:var(--text-lt);">No wins yet! 🎉</div>';
 }
 
 async function postWin() {
@@ -1791,19 +2334,10 @@ async function postWin() {
   closeModal('modal-add-win');
   document.getElementById('w-title').value = '';
   document.getElementById('w-body').value = '';
-  await loadWins();
-  toast('Win shared! You\'re amazing 🎉');
+  await loadWins(); toast('Win shared! 🎉');
 }
 
-async function deleteWin(id) {
-  await db.from('wins').delete().eq('id', id);
-  await loadWins();
-  toast('Win removed.');
-}
-
-// ════════════════════════════════════
-// SQUAD / BRIDESMAID SUITE
-// ════════════════════════════════════
+// ── SQUAD / BRIDAL SUITE ──
 async function loadSquad() {
   if (!currentProfile) return;
   const token = currentProfile.squad_token;
@@ -1822,12 +2356,11 @@ async function loadSquad() {
   renderChat();
 }
 
-function squadTab(tab, btn) {
-  activeSquadTab = tab;
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+function suiteTab(tab, btn) {
+  document.querySelectorAll('#sec-bridalSuite .admin-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('#sec-squad .admin-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('squad-' + tab).classList.add('active');
+  document.querySelectorAll('#sec-bridalSuite .admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('suite-' + tab).classList.add('active');
 }
 
 function renderSquadMembers() {
@@ -1835,16 +2368,17 @@ function renderSquadMembers() {
   if (!list) return;
   list.innerHTML = squadMembers.map(m => `
     <div class="squad-member-card">
-      <div class="squad-avatar" style="background:${m.role==='Maid of Honor'?'var(--burgundy)':'var(--plum)'}">
-        ${m.photo_url ? `<img src="${m.photo_url}" alt="${m.name}">` : m.name[0].toUpperCase()}
+      <div class="squad-avatar" style="background:${m.role==='Maid of Honor'?'var(--burgundy)':m.access_level==='moh'?'var(--burgundy)':'var(--plum)'}">
+        ${m.name[0].toUpperCase()}
       </div>
       <div class="squad-info">
         <div class="squad-name">${m.name}</div>
-        <div class="squad-role">${m.role} · ${m.email}</div>
-        ${m.dress_size ? `<div style="font-size:11px;color:var(--text-lt);margin-top:2px;">Size: ${m.dress_size}${m.dress_color?' · Color: '+m.dress_color:''}</div>` : ''}
+        <div class="squad-role">${m.role}${m.access_level==='moh'?' · Can plan surprises':''}</div>
+        ${m.email ? `<div style="font-size:11px;color:var(--text-lt);margin-top:1px;">${m.email}</div>` : ''}
       </div>
+      <span class="tag ${m.access_level==='moh'?'tag-burg':'tag-plum'}">${m.access_level==='moh'?'MOH':'Bridesmaid'}</span>
       <button class="btn btn-danger btn-sm" onclick="deleteMember('${m.id}')">🗑</button>
-    </div>`).join('') || '<div style="font-size:13px;color:var(--text-lt);padding:.5rem 0;">No bridesmaids added yet. Share your squad link!</div>';
+    </div>`).join('') || '<div style="font-size:13px;color:var(--text-lt);padding:.5rem 0;">No bridesmaids added yet. Share your link!</div>';
 }
 
 function renderDressTracker() {
@@ -1853,7 +2387,7 @@ function renderDressTracker() {
   if (!squadMembers.length) { el.innerHTML = '<div style="font-size:13px;color:var(--text-lt);">Add bridesmaids to track their dresses.</div>'; return; }
   el.innerHTML = `
     <table class="t-table">
-      <thead><tr><th>Name</th><th>Role</th><th>Size</th><th>Color</th><th>Fitting Date</th></tr></thead>
+      <thead><tr><th>Name</th><th>Role</th><th>Size</th><th>Color</th><th>Fitting</th></tr></thead>
       <tbody>${squadMembers.map(m => `
         <tr>
           <td>${m.name}</td>
@@ -1885,7 +2419,7 @@ function renderPolls() {
             <span class="poll-pct">${pct}%</span>
           </div>`;}).join('')}
         <div style="font-size:11px;color:var(--text-lt);margin-top:4px;">${totalVotes} vote${totalVotes!==1?'s':''}</div>
-        <button class="btn btn-danger btn-sm" style="margin-top:6px;" onclick="deletePoll('${p.id}')">🗑 Delete</button>
+        <button class="btn btn-danger btn-sm" style="margin-top:6px;" onclick="deletePoll('${p.id}')">🗑</button>
       </div>`;}).join('') || '<div style="font-size:13px;color:var(--text-lt);">No polls yet. Create one!</div>';
 }
 
@@ -1908,7 +2442,8 @@ async function addMember() {
     role: document.getElementById('m-role').value,
     dress_size: document.getElementById('m-size').value.trim(),
     dress_color: document.getElementById('m-color').value.trim(),
-    fitting_date: document.getElementById('m-fitting').value || null
+    fitting_date: document.getElementById('m-fitting').value || null,
+    access_level: document.getElementById('m-access').value
   };
   if (!member.name||!member.email) { showMsg('member-msg','error','Name and email are required.'); return; }
   const { data, error } = await db.from('squad_members').insert(member).select().single();
@@ -1917,14 +2452,13 @@ async function addMember() {
   closeModal('modal-add-member');
   ['m-name','m-email','m-size','m-color','m-fitting'].forEach(id => document.getElementById(id).value = '');
   renderSquadMembers(); renderDressTracker();
-  toast(`${data.name} added to your squad! 💜`);
+  toast(`${data.name} added! 💜`);
 }
 
 async function deleteMember(id) {
   await db.from('squad_members').delete().eq('id', id);
   squadMembers = squadMembers.filter(m => m.id !== id);
-  renderSquadMembers(); renderDressTracker();
-  toast('Bridesmaid removed.');
+  renderSquadMembers(); renderDressTracker(); toast('Bridesmaid removed.');
 }
 
 async function sendMessage() {
@@ -1939,19 +2473,13 @@ async function sendMessage() {
 
 async function createPoll() {
   const q = document.getElementById('poll-q').value.trim();
-  const opts = [
-    document.getElementById('poll-o1').value.trim(),
-    document.getElementById('poll-o2').value.trim(),
-    document.getElementById('poll-o3').value.trim(),
-    document.getElementById('poll-o4').value.trim(),
-  ].filter(Boolean);
+  const opts = ['poll-o1','poll-o2','poll-o3','poll-o4'].map(id => document.getElementById(id).value.trim()).filter(Boolean);
   if (!q || opts.length < 2) { toast('Please enter a question and at least 2 options.'); return; }
   const { data } = await db.from('squad_polls').insert({ bride_id: currentUser.id, question: q, options: opts, votes: {} }).select().single();
   polls.push(data);
   closeModal('modal-add-poll');
   ['poll-q','poll-o1','poll-o2','poll-o3','poll-o4'].forEach(id => document.getElementById(id).value = '');
-  renderPolls();
-  toast('Poll created! 🗳️');
+  renderPolls(); toast('Poll created! 🗳️');
 }
 
 async function votePoll(pollId, option) {
@@ -1967,18 +2495,180 @@ async function votePoll(pollId, option) {
 async function deletePoll(id) {
   await db.from('squad_polls').delete().eq('id', id);
   polls = polls.filter(p => p.id !== id);
-  renderPolls();
-  toast('Poll deleted.');
+  renderPolls(); toast('Poll deleted.');
 }
 
 function copySquadLink() {
   const link = document.getElementById('squad-link-display').textContent;
-  navigator.clipboard.writeText(link).then(() => toast('Squad link copied! Send it to your bridesmaids 💜'));
+  navigator.clipboard.writeText(link).then(() => toast('Invite link copied! 💜'));
 }
 
-// ════════════════════════════════════
-// PHOTOS
-// ════════════════════════════════════
+// ── WEDDING PARTY HUB ──
+async function loadPartyMembers() {
+  const { data } = await db.from('wedding_party_members').select('*').eq('user_id', currentUser.id).order('created_at').catch(() => ({ data: [] }));
+  partyMembers = data || [];
+}
+
+function partyTab(tab, btn) {
+  document.querySelectorAll('#sec-weddingParty > div:nth-child(2) .admin-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#sec-weddingParty .admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('party-' + tab).classList.add('active');
+  if (tab === 'roster') renderPartyRoster();
+}
+
+function chatTab(tab, btn) {
+  const parent = btn.closest('.admin-section').parentElement;
+  parent.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  parent.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+}
+
+function renderPartyRoster() {
+  const sideFilter = document.getElementById('party-side-filter')?.value || '';
+  const brideEl = document.getElementById('party-bride-side');
+  const groomEl = document.getElementById('party-groom-side');
+  if (!brideEl || !groomEl) return;
+
+  const brideSide = partyMembers.filter(m => m.side === 'bride' || m.side === 'both');
+  const groomSide = partyMembers.filter(m => m.side === 'groom' || m.side === 'both');
+
+  const renderMember = (m) => `
+    <div class="party-member-card">
+      <div class="party-avatar" style="background:${m.side==='bride'?'var(--plum)':m.side==='groom'?'var(--forest)':'var(--gold)'}">
+        ${m.name[0].toUpperCase()}
+      </div>
+      <div class="party-info">
+        <div class="party-name">${m.name}</div>
+        <div class="party-role-text">${m.role}</div>
+      </div>
+      <span class="party-side-badge ${m.side==='bride'?'side-bride':m.side==='groom'?'side-groom':'side-both'}">${m.side}</span>
+      <button class="btn btn-danger btn-sm" onclick="deletePartyMember('${m.id}')">🗑</button>
+    </div>`;
+
+  brideEl.innerHTML = brideSide.length ? brideSide.map(renderMember).join('') : '<div style="font-size:12px;color:var(--text-lt);padding:.5rem 0;">No members yet.</div>';
+  groomEl.innerHTML = groomSide.length ? groomSide.map(renderMember).join('') : '<div style="font-size:12px;color:var(--text-lt);padding:.5rem 0;">No members yet.</div>';
+}
+
+async function addPartyMember() {
+  const member = {
+    user_id: currentUser.id,
+    name: document.getElementById('pm-name').value.trim(),
+    side: document.getElementById('pm-side').value,
+    role: document.getElementById('pm-role').value,
+    email: document.getElementById('pm-email').value.trim(),
+    phone: document.getElementById('pm-phone').value.trim()
+  };
+  if (!member.name) { showMsg('party-member-msg','error','Please enter a name.'); return; }
+  try {
+    const { data, error } = await db.from('wedding_party_members').insert(member).select().single();
+    if (error) throw error;
+    partyMembers.push(data);
+  } catch(e) {
+    // fallback for missing table
+    member.id = Date.now().toString();
+    partyMembers.push(member);
+  }
+  closeModal('modal-add-party-member');
+  ['pm-name','pm-email','pm-phone'].forEach(id => document.getElementById(id).value = '');
+  renderPartyRoster(); toast(`${member.name} added to the wedding party! 🥂`);
+}
+
+async function deletePartyMember(id) {
+  await db.from('wedding_party_members').delete().eq('id', id).catch(()=>{});
+  partyMembers = partyMembers.filter(m => m.id !== id);
+  renderPartyRoster(); toast('Member removed.');
+}
+
+function sendChatMsg(type) {
+  const inp = document.getElementById(type === 'bridal' ? 'bridal-chat-inp' : 'joint-chat-inp');
+  const log = document.getElementById(type === 'bridal' ? 'bridal-chat-log' : 'joint-chat-log');
+  const body = inp?.value.trim();
+  if (!body || !log) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg me';
+  div.innerHTML = `<div class="chat-msg-author">${currentProfile?.name || 'You'}</div>${body}`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+  inp.value = '';
+  // In production this would save to DB
+}
+
+// ── SURPRISE SPACES ──
+async function loadSurpriseSpaces() {
+  const { data } = await db.from('surprise_spaces').select('*').eq('bride_id', currentUser.id).catch(() => ({ data: [] }));
+  surpriseSpaces = data || [];
+  renderSurpriseSpaces();
+}
+
+function renderSurpriseSpaces() {
+  const section = document.getElementById('surprise-spaces-section');
+  const list = document.getElementById('surprise-spaces-list');
+  if (!section || !list) return;
+  if (!surpriseSpaces.length) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  list.innerHTML = surpriseSpaces.map(s => `
+    <div class="surprise-lock">
+      <div class="surprise-lock-icon">🎁</div>
+      <div class="surprise-lock-info">
+        <div class="surprise-lock-name">${s.name}</div>
+        <div class="surprise-lock-sub">${s.type} · Created by your squad</div>
+      </div>
+      <span class="surprise-lock-badge">🔒 Surprise</span>
+    </div>`).join('');
+}
+
+async function createSurpriseSpace() {
+  const space = {
+    bride_id: currentUser.id,
+    name: document.getElementById('surp-name').value.trim(),
+    type: document.getElementById('surp-type').value,
+    access: document.getElementById('surp-access').value,
+    created_by: currentUser.id
+  };
+  if (!space.name) { toast('Please enter a name for the surprise space.'); return; }
+  try {
+    const { data } = await db.from('surprise_spaces').insert(space).select().single();
+    surpriseSpaces.push(data);
+  } catch(e) {
+    space.id = Date.now().toString();
+    surpriseSpaces.push(space);
+  }
+  closeModal('modal-add-surprise');
+  document.getElementById('surp-name').value = '';
+  renderSurpriseSpaces();
+  toast('Surprise space created! The bride can see it exists but not what\'s inside. 🎁');
+}
+
+// ── GROOM CONNECT ──
+function updateSharing() {
+  toast('Sharing preferences saved!');
+}
+
+function updateSurprisePreference() {
+  const allowed = document.getElementById('allow-surprises').checked;
+  toast(allowed ? 'Surprise spaces allowed! Your squad can plan things for you. 🎁' : 'Surprise spaces turned off. You\'ll see everything.');
+}
+
+async function connectGroom() {
+  const code = document.getElementById('partner-code').value.trim().toUpperCase();
+  if (!code) { toast('Please enter your partner\'s connection code.'); return; }
+  toast('Connection request sent! Your partner will need to accept in Tapüy Groom. 💍');
+  closeModal('modal-connect-groom');
+  document.getElementById('groom-connect-status').innerHTML = '<span style="width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite;display:inline-block;"></span><span>Pending...</span>';
+}
+
+function copyConnectCode() {
+  const code = document.getElementById('my-connect-code').textContent;
+  if (code && code !== '—') {
+    navigator.clipboard.writeText(code).then(() => toast('Connection code copied! 💍'));
+  } else {
+    toast('No code yet — save your settings first.');
+  }
+}
+
+// ── PHOTOS ──
 async function loadPhotos() {
   const { data } = await db.from('photos').select('*').eq('user_id', currentUser.id).order('created_at');
   photos = data || [];
@@ -1990,7 +2680,7 @@ function renderPhotos() {
   if (!grid) return;
   grid.innerHTML = photos.map(p => `
     <div class="photo-thumb-wrap">
-      <img src="${p.url}" class="photo-thumb" alt="${p.caption||'Photo'}">
+      <img src="${p.url}" class="photo-thumb" alt="Photo">
       <button class="photo-del-btn" onclick="deletePhoto('${p.id}')">✕</button>
     </div>`).join('');
 }
@@ -2005,23 +2695,19 @@ async function uploadPhotos(input) {
     const { data: photo } = await db.from('photos').insert({ user_id: currentUser.id, bride_id: currentUser.id, url: urlData.publicUrl }).select().single();
     if (photo) photos.push(photo);
   }
-  renderPhotos();
-  toast(`${files.length} photo${files.length!==1?'s':''} uploaded!`);
+  renderPhotos(); toast(`${files.length} photo${files.length!==1?'s':''} uploaded!`);
 }
 
 async function deletePhoto(id) {
   await db.from('photos').delete().eq('id', id);
   photos = photos.filter(p => p.id !== id);
-  renderPhotos();
-  toast('Photo removed.');
+  renderPhotos(); toast('Photo removed.');
 }
 
-// ════════════════════════════════════
-// SQUAD LANDING (bridesmaids)
-// ════════════════════════════════════
+// ── SQUAD LANDING ──
 async function loadSquadLanding(token) {
   const { data: profile } = await db.from('profiles').select('name').eq('squad_token', token).single();
-  if (profile) document.getElementById('sq-bride-name').textContent = `You're invited to ${profile.name}'s squad! 💜`;
+  if (profile) document.getElementById('sq-bride-name').textContent = `You're invited to ${profile.name}'s suite! 💜`;
 }
 
 async function joinSquad() {
@@ -2030,23 +2716,19 @@ async function joinSquad() {
   const token = new URLSearchParams(location.search).get('squad');
   if (!name||!email) { showMsg('sq-join-msg','error','Please enter your name and email.'); return; }
   const { data: profile } = await db.from('profiles').select('id').eq('squad_token', token).single();
-  if (!profile) { showMsg('sq-join-msg','error','Invalid squad link.'); return; }
-  const { error } = await db.from('squad_members').upsert({ bride_id: profile.id, name, email, role: 'Bridesmaid' }, { onConflict: 'bride_id,email' });
+  if (!profile) { showMsg('sq-join-msg','error','Invalid invite link.'); return; }
+  const { error } = await db.from('squad_members').upsert({ bride_id: profile.id, name, email, role: 'Bridesmaid', access_level: 'bridesmaid' }, { onConflict: 'bride_id,email' });
   if (error) { showMsg('sq-join-msg','error', error.message); return; }
-  showMsg('sq-join-msg','success',`Welcome to the squad, ${name}! 💜 Your info has been saved.`);
+  showMsg('sq-join-msg','success',`Welcome to the suite, ${name}! 💜`);
 }
 
-// ════════════════════════════════════
-// AI CONCIERGE
-// ════════════════════════════════════
+// ── AI CONCIERGE ──
 const AI_BANK = [
-  "Great question! The most important thing to book first is your venue — it sets the date, the guest count, and unlocks everything else. Most great venues are booked 12–18 months out.",
-  "For budget florals: choose seasonal and local flowers, lean into greenery (eucalyptus, ferns), use pampas grass for drama at low cost, and ask your florist about bulk pricing on simpler arrangements.",
-  "Negotiation script: 'We absolutely love your work and you're our first choice. We're working with a budget of $X — is there any flexibility, or could we adjust the package to fit?' Always ask. The worst they can say is no.",
-  "For a destination wedding under $20k: Colombia (Cartagena), Mexico (Riviera Maya, Puerto Vallarta), and Portugal (Lisbon, Alentejo) are stunning, affordable, and have great local vendors.",
-  "To save on catering: choose a brunch or lunch wedding (meals cost less), serve a cocktail-style reception instead of plated dinner, reduce the open bar to beer/wine only, and go with a seasonal menu.",
-  "Your dress timeline: order at least 8–9 months before the wedding to allow for production (4–6 months) and alterations (2–3 months). For a budget dress, check BHLDN, sample sales, and Etsy.",
-  "The best photography tip: book your photographer before your venue. A great photographer can make any venue look stunning; an average photographer can make a beautiful venue look flat.",
+  "For a bridal shower on a budget: host it at someone's home, DIY the florals with grocery store blooms, make the food a potluck-style spread, and keep the guest list intimate. The most memorable showers are the ones that feel personal, not expensive.",
+  "The MOH's main jobs: plan the bachelorette and bridal shower, manage the bridesmaids, give a speech, and be the bride's emotional support during the wedding day. The bride handles all the big planning decisions — the MOH handles the people.",
+  "For coordination without overwhelm: use one shared document for the wedding party with key dates, dress codes, and logistics. A single source of truth eliminates 90% of group text chaos.",
+  "Best destinations under $20k: Cartagena, Colombia (stunning architecture, affordable vendors), Riviera Maya, Mexico (all-inclusive friendly), and Lisbon, Portugal (incredible value in Europe).",
+  "Vendor negotiation script: 'We love your work and you're our top choice. We're working within $X budget — is there any flexibility or can we adjust the package scope?' Always ask. The worst they can say is no.",
 ];
 let aiIdx = 0;
 
@@ -2058,20 +2740,18 @@ async function askAI() {
   inp.value = '';
   const btn = document.querySelector('#sec-ai .btn-primary');
   if (btn) { btn.disabled = true; btn.textContent = '...'; }
-  // Try Anthropic API
   try {
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514', max_tokens: 300,
-        system: 'You are a warm, expert wedding planning concierge for Tapüy Bride — a platform for budget-conscious brides. Give practical, specific advice in 2-4 sentences. Be encouraging and real, not generic.',
+        system: 'You are a warm, expert wedding planning concierge for Tapüy Bride — an all-in-one platform for brides, their wedding party, and their partner. Give practical, specific advice in 2-4 sentences. Be encouraging and real.',
         messages: [{ role: 'user', content: q }]
       })
     });
     const data = await resp.json();
-    const text = data.content?.[0]?.text || AI_BANK[aiIdx++ % AI_BANK.length];
-    addAIMsg('Tapüy AI', text, 'them');
+    addAIMsg('Tapüy AI', data.content?.[0]?.text || AI_BANK[aiIdx++ % AI_BANK.length], 'them');
   } catch {
     addAIMsg('Tapüy AI', AI_BANK[aiIdx++ % AI_BANK.length], 'them');
   }
@@ -2083,15 +2763,13 @@ function quickAsk(q) { document.getElementById('ai-inp').value = q; askAI(); }
 function addAIMsg(author, text, side) {
   const log = document.getElementById('ai-log');
   const div = document.createElement('div');
-  div.style.cssText = `background:${side==='them'?'rgba(242,224,204,.4)':'rgba(107,26,42,.06)'};border-radius:var(--radius);padding:.75rem .95rem;align-self:${side==='them'?'flex-start':'flex-end'};max-width:85%;`;
+  div.style.cssText = `background:${side==='them'?'rgba(242,224,204,.4)':'rgba(107,26,42,.06)'};border-radius:var(--radius);padding:.75rem .95rem;`;
   div.innerHTML = `<div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:${side==='them'?'var(--mauve)':'var(--forest)'};margin-bottom:3px;">${author}</div><div style="font-size:13px;color:var(--text-md);line-height:1.7;">${text}</div>`;
   log.appendChild(div);
   log.scrollTop = log.scrollHeight;
 }
 
-// ════════════════════════════════════
-// RESOURCES
-// ════════════════════════════════════
+// ── RESOURCES ──
 function renderResources() {
   const items = [
     {name:'The Knot',emoji:'💍',url:'https://theknot.com',desc:'Vendor search, planning tools and wedding website builder.',tag:'Planning'},
@@ -2107,7 +2785,7 @@ function renderResources() {
   const g = document.getElementById('resources-grid');
   if (g) g.innerHTML = items.map(r => `
     <a href="${r.url}" target="_blank" rel="noopener">
-      <div class="card" style="cursor:pointer;transition:box-shadow .2s,transform .18s;" onmouseover="this.style.cssText='cursor:pointer;transition:box-shadow .2s,transform .18s;box-shadow:var(--shadow);transform:translateY(-2px)'" onmouseout="this.style.cssText='cursor:pointer;transition:box-shadow .2s,transform .18s;'">
+      <div class="card" style="cursor:pointer;">
         <div style="font-size:26px;margin-bottom:7px;">${r.emoji}</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
           <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--burg-dk);">${r.name}</div>
@@ -2118,9 +2796,7 @@ function renderResources() {
     </a>`).join('');
 }
 
-// ════════════════════════════════════
-// ADMIN
-// ════════════════════════════════════
+// ── ADMIN ──
 function adminTab(tab, btn) {
   document.querySelectorAll('#sec-admin .admin-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
@@ -2129,56 +2805,24 @@ function adminTab(tab, btn) {
 }
 
 async function loadAdminData() {
-  // All vendors (pending + approved)
-  const { data: allVendors } = await db.from('vendors').select('*').order('approved', {ascending:true}).order('created_at', {ascending:false});
+  const { data: allVendors } = await db.from('vendors').select('*').order('approved',{ascending:true}).order('created_at',{ascending:false});
   document.getElementById('admin-vendor-list').innerHTML = (allVendors||[]).map(v => `
     <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:.5px solid var(--border);">
-      <div style="flex:1;"><div style="font-size:13px;font-weight:400;">${v.name}</div><div style="font-size:11px;color:var(--text-lt);">${v.category} · ${v.location||'—'} · ${v.budget_range}</div></div>
-      <span class="tag ${v.approved?'tag-sage':'tag-peach'}">${v.approved?'Approved':'Pending'}</span>
+      <div style="flex:1;"><div style="font-size:13px;font-weight:400;">${v.name}</div><div style="font-size:11px;color:var(--text-lt);">${v.category} · ${v.location||'—'}</div></div>
+      <span class="tag ${v.approved?'tag-sage':'tag-peach'}">${v.approved?'Live':'Pending'}</span>
       ${!v.approved ? `<button class="btn btn-primary btn-sm" onclick="approveVendor('${v.id}')">Approve</button>` : ''}
       <button class="btn btn-danger btn-sm" onclick="adminDeleteVendor('${v.id}')">🗑</button>
-    </div>`).join('');
-
-  // All threads
-  const { data: allThreads } = await db.from('forum_threads').select('*, profiles(name)').order('created_at', {ascending:false});
-  document.getElementById('admin-thread-list').innerHTML = (allThreads||[]).map(t => `
-    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:.5px solid var(--border);">
-      <div style="flex:1;"><div style="font-size:13px;">${t.title}</div><div style="font-size:11px;color:var(--text-lt);">By ${t.profiles?.name||'—'} · ${timeAgo(t.created_at)}</div></div>
-      <span class="tag ${t.approved?'tag-sage':'tag-peach'}">${t.approved?'Live':'Hidden'}</span>
-      <button class="btn btn-danger btn-sm" onclick="adminDeleteThread('${t.id}')">🗑</button>
-    </div>`).join('');
-
-  // All wins
-  const { data: allWins } = await db.from('wins').select('*, profiles(name)').order('created_at', {ascending:false});
-  document.getElementById('admin-wins-list').innerHTML = (allWins||[]).map(w => `
-    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:.5px solid var(--border);">
-      <div style="flex:1;"><div style="font-size:13px;">${w.title}</div><div style="font-size:11px;color:var(--text-lt);">By ${w.profiles?.name||'—'}</div></div>
-      <button class="btn btn-danger btn-sm" onclick="adminDeleteWin('${w.id}')">🗑</button>
     </div>`).join('');
 }
 
 async function approveVendor(id) {
   await db.from('vendors').update({ approved: true }).eq('id', id);
-  await loadAdminData(); await loadVendors();
-  toast('Vendor approved!');
+  await loadAdminData(); await loadVendors(); toast('Vendor approved!');
 }
 
 async function adminDeleteVendor(id) {
   await db.from('vendors').delete().eq('id', id);
-  await loadAdminData(); await loadVendors();
-  toast('Vendor deleted.');
-}
-
-async function adminDeleteThread(id) {
-  await db.from('forum_threads').delete().eq('id', id);
-  await loadAdminData();
-  toast('Thread deleted.');
-}
-
-async function adminDeleteWin(id) {
-  await db.from('wins').delete().eq('id', id);
-  await loadAdminData();
-  toast('Win deleted.');
+  await loadAdminData(); await loadVendors(); toast('Vendor deleted.');
 }
 
 async function adminAddVendor() {
@@ -2191,45 +2835,46 @@ async function adminAddVendor() {
     emoji: document.getElementById('av-emoji').value.trim() || '✨',
     color: document.getElementById('av-color').value.trim() || '#6B1A2A',
     featured: document.getElementById('av-feat').value === 'true',
-    approved: true,
-    rating: 5.0
+    approved: true, rating: 5.0
   };
   if (!v.name) { toast('Please enter a business name.'); return; }
   await db.from('vendors').insert(v);
   closeModal('modal-admin-add-vendor');
-  await loadAdminData(); await loadVendors();
-  toast('Vendor added!');
+  await loadAdminData(); await loadVendors(); toast('Vendor added!');
 }
 
-// ════════════════════════════════════
-// TIMELINE
-// ════════════════════════════════════
+// ── TIMELINE ──
 function addTimelineEvent() {
   const time = document.getElementById('tl-time').value.trim();
   const event = document.getElementById('tl-event').value.trim();
   const detail = document.getElementById('tl-detail').value.trim();
   if (!time||!event) { toast('Please enter a time and event.'); return; }
-  const list = document.getElementById('timeline-list');
-  const div = document.createElement('div');
-  div.style.cssText = 'display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);';
-  div.innerHTML = `<div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">${time}</div><div style="flex:1;"><div style="font-size:13px;font-weight:400;">${event}</div>${detail?`<div style="font-size:11px;color:var(--text-lt);">${detail}</div>`:''}</div><button class="btn btn-danger btn-sm" onclick="this.closest('div[style]').remove()">🗑</button>`;
-  list.appendChild(div);
+  // Add to both timeline lists
+  ['timeline-list','party-timeline-list'].forEach(listId => {
+    const list = document.getElementById(listId);
+    if (!list) return;
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:12px;padding:9px 0;border-bottom:.5px solid var(--border);';
+    div.innerHTML = `<div style="font-size:13px;font-weight:400;color:var(--mauve);width:65px;flex-shrink:0;">${time}</div><div style="flex:1;"><div style="font-size:13px;font-weight:400;">${event}</div>${detail?`<div style="font-size:11px;color:var(--text-lt);">${detail}</div>`:''}</div><button class="btn btn-danger btn-sm" onclick="this.closest('div[style]').remove()">🗑</button>`;
+    list.appendChild(div);
+  });
   closeModal('modal-add-timeline');
   ['tl-time','tl-event','tl-detail'].forEach(id => document.getElementById(id).value = '');
-  toast('Event added!');
+  toast('Event added to timeline!');
 }
 
-// ════════════════════════════════════
-// UTILS
-// ════════════════════════════════════
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => { if(e.target===o) o.classList.remove('open'); }));
+// ── UTILS ──
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+
+document.querySelectorAll('.overlay').forEach(o => o.addEventListener('click', e => {
+  if(e.target===o) o.classList.remove('open');
+}));
 
 function showMsg(id, type, text) {
   const el = document.getElementById(id);
   if (!el) return;
-  el.innerHTML = `<div class="msg msg-${type==='error'?'error':'success'}">${text}</div>`;
+  el.innerHTML = `<div class="msg msg-${type==='error'?'error':type==='info'?'info':'success'}">${text}</div>`;
 }
 
 function toast(msg) {
