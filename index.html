@@ -455,6 +455,14 @@ a{text-decoration:none;color:inherit;}
     </div>
 
     <div class="nav-section">
+      <div class="nav-label">Wedding Details</div>
+      <button class="nav-item" onclick="navTo('vision',this)"><span class="nav-icon">🎨</span>Vision</button>
+      <button class="nav-item" onclick="navTo('seating',this)"><span class="nav-icon">🪑</span>Seating Chart</button>
+      <button class="nav-item" onclick="navTo('theDay',this)"><span class="nav-icon">🌸</span>The Day</button>
+      <button class="nav-item" onclick="navTo('todoTimeline',this)"><span class="nav-icon">📝</span>To-Do Timeline</button>
+    </div>
+
+    <div class="nav-section">
       <div class="nav-label">Discover</div>
       <button class="nav-item" onclick="navTo('vendors',this)"><span class="nav-icon">🔍</span>Vendor Directory</button>
       <button class="nav-item" onclick="navTo('saved',this)"><span class="nav-icon">💾</span>Saved Vendors</button>
@@ -1216,6 +1224,96 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
 
+      <!-- ══════════════════ VISION ══════════════════ -->
+      <div class="page-section" id="sec-vision">
+        <div class="section-title">Vision 🎨</div>
+        <div class="section-sub">The vibe, the palette, the feeling — capture it here so every vendor decision points the same direction.</div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">The Vibe</div>
+            <div class="field"><label>Describe your wedding vibe / mood</label>
+              <textarea id="vision-vibe" placeholder="e.g. Warm, romantic, botanical — golden hour light, lush greenery, candlelight, a little wild and a little elegant." rows="8"></textarea>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="saveVisionVibe()">Save Vibe</button>
+          </div>
+          <div class="card">
+            <div class="card-title">Color Palette</div>
+            <div id="vision-swatches" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1rem;"></div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <input type="color" id="vision-color-picker" value="#6B1A2A" style="width:44px;height:38px;border:.5px solid var(--border);border-radius:var(--radius);cursor:pointer;padding:2px;">
+              <input type="text" id="vision-color-label" placeholder="Label (e.g. Burgundy)" style="flex:1;padding:9px 11px;border:.5px solid var(--border);border-radius:var(--radius);font-size:13px;outline:none;">
+              <button class="btn btn-ghost btn-sm" onclick="addVisionColor()">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ SEATING CHART ══════════════════ -->
+      <div class="page-section" id="sec-seating">
+        <div class="section-title">Seating Chart 🪑</div>
+        <div class="section-sub">Build your tables and assign guests from your guest list.</div>
+        <div style="margin-bottom:1rem;"><button class="btn btn-primary btn-sm" onclick="openModal('modal-add-table')">+ Add Table</button></div>
+        <div class="card" style="margin-bottom:1rem;">
+          <div class="card-title">Unassigned Guests</div>
+          <div id="seating-unassigned"></div>
+        </div>
+        <div class="grid-2" id="seating-tables-grid"></div>
+      </div>
+
+      <!-- ══════════════════ THE DAY ══════════════════ -->
+      <div class="page-section" id="sec-theDay">
+        <div class="section-title">The Day 🌸</div>
+        <div class="section-sub">Everything for the morning of — getting ready, the little traditions, and the just-in-case kit.</div>
+        <div class="grid-2" style="margin-bottom:1rem;">
+          <div class="card">
+            <div class="card-title">Getting Ready</div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Hair & makeup start time confirmed</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Getting-ready outfit / robe ready</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Getting-ready location confirmed</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Photographer arrival time confirmed</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Playlist / speaker ready for getting-ready room</div></div></div>
+            <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div><div class="check-text">Snacks & water for the room</div></div></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Something Old, New, Borrowed, Blue</div>
+            <div class="field"><label>Something Old</label><input type="text" id="tday-old" placeholder="e.g. Grandmother's brooch"></div>
+            <div class="field"><label>Something New</label><input type="text" id="tday-new" placeholder="e.g. Wedding shoes"></div>
+            <div class="field"><label>Something Borrowed</label><input type="text" id="tday-borrowed" placeholder="e.g. Mom's veil"></div>
+            <div class="field"><label>Something Blue</label><input type="text" id="tday-blue" placeholder="e.g. Blue ribbon sewn into dress"></div>
+            <button class="btn btn-primary btn-sm" onclick="saveTheDay()">Save</button>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+            <div class="card-title" style="margin:0;">Emergency Kit</div>
+            <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-emergency-item')">+ Add Item</button>
+          </div>
+          <div id="emergency-kit-list"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════ TO-DO TIMELINE ══════════════════ -->
+      <div class="page-section" id="sec-todoTimeline">
+        <div class="section-title">Wedding To-Do Timeline 📝</div>
+        <div class="section-sub">The details that don't fit a checklist — songs, ceremony order, and everything after the "I do."</div>
+        <div class="grid-2">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+              <div class="card-title" style="margin:0;">Pre-Wedding</div>
+              <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-todo');document.getElementById('todo-phase').value='pre'">+ Add</button>
+            </div>
+            <div id="todo-pre-list"></div>
+          </div>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;">
+              <div class="card-title" style="margin:0;">Post-Wedding</div>
+              <button class="btn btn-ghost btn-sm" onclick="openModal('modal-add-todo');document.getElementById('todo-phase').value='post'">+ Add</button>
+            </div>
+            <div id="todo-post-list"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- ══════════════════ ADMIN ══════════════════ -->
       <div class="page-section" id="sec-admin">
         <div class="section-title">Admin Panel ⚙️</div>
@@ -1664,6 +1762,53 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div>
 
+<!-- Add Seating Table -->
+<div class="overlay" id="modal-add-table">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Table</div><button class="modal-close" onclick="closeModal('modal-add-table')">✕</button></div>
+    <div class="modal-body">
+      <div class="grid-2">
+        <div class="field"><label>Table number</label><input type="number" id="table-number" placeholder="1" min="1"></div>
+        <div class="field"><label>Table name (optional)</label><input type="text" id="table-name" placeholder="e.g. Head Table"></div>
+      </div>
+      <div class="field"><label>Seats</label><input type="number" id="table-capacity" placeholder="8" min="1" value="8"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-table')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addSeatingTable()">Add Table</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Emergency Kit Item -->
+<div class="overlay" id="modal-add-emergency-item">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add Emergency Kit Item</div><button class="modal-close" onclick="closeModal('modal-add-emergency-item')">✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Item</label><input type="text" id="emergency-item-text" placeholder="e.g. Safety pins, stain remover pen" onkeydown="if(event.key==='Enter')addEmergencyItem()"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-emergency-item')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addEmergencyItem()">Add Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add To-Do Item -->
+<div class="overlay" id="modal-add-todo">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">Add To-Do</div><button class="modal-close" onclick="closeModal('modal-add-todo')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="todo-phase" value="pre">
+      <div class="field"><label>Item</label><input type="text" id="todo-text" placeholder="e.g. Finalize processional order" onkeydown="if(event.key==='Enter')addTodoItem()"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal('modal-add-todo')">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="addTodoItem()">Add To-Do</button>
+    </div>
+  </div>
+</div>
+
 <!-- ════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════ -->
@@ -1683,6 +1828,10 @@ let squadMembers = [], chatMessages = [], polls = [], photos = [];
 let partyMembers = [], surpriseSpaces = [];
 let eventGuests = { shower: [], engage: [], rehearsal: [] };
 let bridalChatMsgs = [], jointChatMsgs = [];
+let visionBoard = null;
+let seatingTables = [];
+let theDay = null;
+let todos = [];
 
 // ── INIT ──
 window.addEventListener('DOMContentLoaded', async () => {
@@ -1707,7 +1856,34 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 async function initApp(user) {
   currentUser = user;
-  const { data: profile } = await db.from('profiles').select('*').eq('id', user.id).single();
+  let { data: profile, error: profileError } = await db.from('profiles').select('*').eq('id', user.id).single();
+
+  // No profile row yet (common right after signup if no DB trigger created one) — create it now.
+  if (!profile) {
+    const meta = user.user_metadata || {};
+    const gen = () => Math.random().toString(36).slice(2, 10);
+    const { data: created, error: createError } = await db.from('profiles').insert({
+      id: user.id,
+      name: meta.name || '',
+      wedding_date: meta.wedding_date || null,
+      budget_total: meta.budget_total || 25000,
+      allow_surprises: meta.allow_surprises ?? true,
+      squad_token: gen(),
+      connect_code: gen().toUpperCase(),
+      tier: 'free'
+    }).select().single();
+
+    if (createError) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'flex';
+      showView('v-login');
+      showMsg('login-msg', 'error', 'We signed you in, but could not set up your profile: ' + createError.message + '. Please check the Supabase "profiles" table and RLS policies (see chat for the SQL fix), then try signing in again.');
+      await db.auth.signOut();
+      return;
+    }
+    profile = created;
+  }
+
   currentProfile = profile;
   document.getElementById('loading').style.display = 'none';
   document.getElementById('auth-screen').style.display = 'none';
@@ -1755,9 +1931,14 @@ async function doLogin() {
   const btn = document.getElementById('btn-login');
   if (!email || !pw) { showMsg('login-msg','error','Please fill in all fields.'); return; }
   btn.disabled = true; btn.textContent = 'Signing in...';
-  const { error } = await db.auth.signInWithPassword({ email, password: pw });
-  btn.disabled = false; btn.textContent = 'Sign In';
-  if (error) showMsg('login-msg','error', error.message);
+  try {
+    const { error } = await db.auth.signInWithPassword({ email, password: pw });
+    if (error) showMsg('login-msg','error', error.message);
+  } catch (e) {
+    showMsg('login-msg','error', 'Something went wrong: ' + (e.message || e));
+  } finally {
+    btn.disabled = false; btn.textContent = 'Sign In';
+  }
 }
 
 async function doRegister() {
@@ -1771,13 +1952,24 @@ async function doRegister() {
   if (!name||!email||!pw) { showMsg('reg-msg','error','Please fill in all required fields.'); return; }
   if (pw.length < 8) { showMsg('reg-msg','error','Password must be at least 8 characters.'); return; }
   btn.disabled = true; btn.textContent = 'Creating account...';
-  const { error } = await db.auth.signUp({
-    email, password: pw,
-    options: { data: { name, wedding_date: date || null, budget_total: budget, allow_surprises: allowSurprises } }
-  });
-  btn.disabled = false; btn.textContent = 'Create Account';
-  if (error) showMsg('reg-msg','error', error.message);
-  else showMsg('reg-msg','success','Account created! Check your email to confirm, then sign in.');
+  try {
+    const { data, error } = await db.auth.signUp({
+      email, password: pw,
+      options: { data: { name, wedding_date: date || null, budget_total: budget, allow_surprises: allowSurprises } }
+    });
+    if (error) {
+      showMsg('reg-msg','error', error.message);
+    } else if (data.session) {
+      // Email confirmation is OFF — user is already signed in, initApp will run via onAuthStateChange.
+      showMsg('reg-msg','success','Account created! Setting things up...');
+    } else {
+      showMsg('reg-msg','success','Account created! Check your email to confirm, then sign in.');
+    }
+  } catch (e) {
+    showMsg('reg-msg','error', 'Something went wrong: ' + (e.message || e));
+  } finally {
+    btn.disabled = false; btn.textContent = 'Create Account';
+  }
 }
 
 async function doReset() {
@@ -1828,9 +2020,11 @@ async function loadAllData() {
   await Promise.all([
     loadTasks(), loadBudget(), loadGuests(),
     loadVendors(), loadForum(), loadWins(),
-    loadSquad(), loadPhotos(), loadPartyMembers(), loadSurpriseSpaces()
+    loadSquad(), loadPhotos(), loadPartyMembers(), loadSurpriseSpaces(),
+    loadVisionBoard(), loadSeatingTables(), loadTheDay(), loadTodos()
   ]);
   renderResources();
+  renderSeatingChart(); // re-render now that guests + tables have both loaded
 }
 
 // ── NAV ──
@@ -1842,6 +2036,10 @@ const PAGE_META = {
   bridalSuite:  ['Bridal Suite 💜', 'Your private world — every pre-wedding event'],
   weddingParty: ['Wedding Party Hub 🥂', 'Everyone in one place'],
   groomConnect: ['Groom Connect 💍', 'Plan together — share what matters'],
+  vision:       ['Vision 🎨', 'The vibe, the palette, the feeling'],
+  seating:      ['Seating Chart 🪑', 'Build your tables and assign guests'],
+  theDay:       ['The Day 🌸', 'Getting ready, traditions, and the emergency kit'],
+  todoTimeline: ['Wedding To-Do Timeline 📝', 'Pre and post-wedding details'],
   vendors:      ['Vendor Directory', 'Browse trusted vendors by category and budget'],
   saved:        ['Saved Vendors', 'Your saved and booked vendors'],
   forum:        ['Bride Forum', 'Ask questions, share advice, celebrate wins'],
@@ -2861,6 +3059,329 @@ function addTimelineEvent() {
   closeModal('modal-add-timeline');
   ['tl-time','tl-event','tl-detail'].forEach(id => document.getElementById(id).value = '');
   toast('Event added to timeline!');
+}
+
+// ── VISION BOARD ──
+async function loadVisionBoard() {
+  try {
+    const { data, error } = await db.from('vision_boards').select('*').eq('user_id', currentUser.id).maybeSingle();
+    if (error) throw error;
+    visionBoard = data || { user_id: currentUser.id, vibe_text: '', colors: [] };
+  } catch(e) {
+    visionBoard = visionBoard || { user_id: currentUser.id, vibe_text: '', colors: [] };
+  }
+  renderVisionBoard();
+}
+
+function renderVisionBoard() {
+  const vibeEl = document.getElementById('vision-vibe');
+  if (vibeEl) vibeEl.value = visionBoard?.vibe_text || '';
+  const wrap = document.getElementById('vision-swatches');
+  if (!wrap) return;
+  const colors = visionBoard?.colors || [];
+  wrap.innerHTML = colors.length ? colors.map((c, i) => `
+    <div style="text-align:center;">
+      <div style="width:56px;height:56px;border-radius:var(--radius);background:${c.hex};border:.5px solid var(--border);position:relative;cursor:pointer;" onclick="removeVisionColor(${i})" title="Click to remove">
+        <span style="position:absolute;top:-6px;right:-6px;background:var(--white);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;border:.5px solid var(--border);">✕</span>
+      </div>
+      <div style="font-size:10px;color:var(--text-lt);margin-top:4px;max-width:56px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.label || c.hex}</div>
+    </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);">No colors added yet.</div>';
+}
+
+async function saveVisionVibe() {
+  visionBoard.vibe_text = document.getElementById('vision-vibe').value.trim();
+  await persistVisionBoard();
+  toast('Vibe saved! 🎨');
+}
+
+async function addVisionColor() {
+  const hex = document.getElementById('vision-color-picker').value;
+  const label = document.getElementById('vision-color-label').value.trim();
+  visionBoard.colors = visionBoard.colors || [];
+  visionBoard.colors.push({ hex, label });
+  document.getElementById('vision-color-label').value = '';
+  renderVisionBoard();
+  await persistVisionBoard();
+  toast('Color added!');
+}
+
+async function removeVisionColor(idx) {
+  visionBoard.colors.splice(idx, 1);
+  renderVisionBoard();
+  await persistVisionBoard();
+}
+
+async function persistVisionBoard() {
+  try {
+    await db.from('vision_boards').upsert({
+      user_id: currentUser.id,
+      vibe_text: visionBoard.vibe_text || '',
+      colors: visionBoard.colors || []
+    }, { onConflict: 'user_id' });
+  } catch(e) { /* table may not exist yet — data still held in memory for this session */ }
+}
+
+// ── SEATING CHART ──
+async function loadSeatingTables() {
+  try {
+    const { data, error } = await db.from('seating_tables').select('*').eq('user_id', currentUser.id).order('number');
+    if (error) throw error;
+    seatingTables = data || [];
+  } catch(e) { seatingTables = seatingTables || []; }
+}
+
+function renderSeatingChart() {
+  const unassignedEl = document.getElementById('seating-unassigned');
+  const gridEl = document.getElementById('seating-tables-grid');
+  if (!unassignedEl || !gridEl) return;
+
+  const unassigned = guests.filter(g => !g.table_number);
+  unassignedEl.innerHTML = unassigned.length ? unassigned.map(g => `
+    <div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:.5px solid var(--border);">
+      <div style="flex:1;font-size:13px;">${g.first_name} ${g.last_name||''} <span class="tag tag-${g.side==='Bride'?'burg':'forest'}" style="margin-left:6px;">${g.side}</span></div>
+      <select class="fil-sel" onchange="assignGuestToTable('${g.id}', this.value)">
+        <option value="">Assign to table...</option>
+        ${seatingTables.map(t => `<option value="${t.number}">Table ${t.number}${t.name?' — '+t.name:''}</option>`).join('')}
+      </select>
+    </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);">Everyone\'s seated! 🎉</div>';
+
+  gridEl.innerHTML = seatingTables.length ? seatingTables.map(t => {
+    const assigned = guests.filter(g => g.table_number === t.number);
+    return `<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+        <div class="card-title" style="margin:0;">Table ${t.number}${t.name?' — '+t.name:''}</div>
+        <button class="btn btn-danger btn-sm" onclick="deleteSeatingTable('${t.id}', ${t.number})">🗑</button>
+      </div>
+      <div style="font-size:11px;color:var(--text-lt);margin-bottom:.6rem;">${assigned.length} / ${t.capacity} seats</div>
+      ${assigned.length ? assigned.map(g => `
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:.5px solid var(--border);">
+          <div style="flex:1;font-size:13px;">${g.first_name} ${g.last_name||''}</div>
+          <button class="btn btn-ghost btn-sm" onclick="assignGuestToTable('${g.id}', '')">Remove</button>
+        </div>`).join('') : '<div style="font-size:12px;color:var(--text-lt);">No one seated here yet.</div>'}
+    </div>`;
+  }).join('') : '<div class="card" style="grid-column:1/-1;text-align:center;padding:2rem;"><div style="font-size:13px;color:var(--text-lt);">No tables yet. Add your first one!</div></div>';
+}
+
+async function addSeatingTable() {
+  const number = parseInt(document.getElementById('table-number').value);
+  const name = document.getElementById('table-name').value.trim();
+  const capacity = parseInt(document.getElementById('table-capacity').value) || 8;
+  if (!number) { toast('Please enter a table number.'); return; }
+  if (seatingTables.some(t => t.number === number)) { toast('That table number already exists.'); return; }
+  const table = { user_id: currentUser.id, number, name, capacity };
+  try {
+    const { data, error } = await db.from('seating_tables').insert(table).select().single();
+    if (error) throw error;
+    seatingTables.push(data);
+  } catch(e) {
+    table.id = Date.now().toString();
+    seatingTables.push(table);
+  }
+  seatingTables.sort((a,b) => a.number - b.number);
+  closeModal('modal-add-table');
+  ['table-number','table-name'].forEach(id => document.getElementById(id).value = '');
+  renderSeatingChart();
+  toast(`Table ${number} added!`);
+}
+
+async function deleteSeatingTable(id, number) {
+  try { await db.from('seating_tables').delete().eq('id', id); } catch(e) {}
+  seatingTables = seatingTables.filter(t => t.id !== id);
+  // Unseat any guests at that table
+  const affected = guests.filter(g => g.table_number === number);
+  for (const g of affected) { await assignGuestToTable(g.id, '', true); }
+  renderSeatingChart();
+  toast('Table removed.');
+}
+
+async function assignGuestToTable(guestId, tableNumberStr, skipRender) {
+  const tableNumber = tableNumberStr ? parseInt(tableNumberStr) : null;
+  const g = guests.find(x => x.id === guestId);
+  if (!g) return;
+  g.table_number = tableNumber;
+  try { await db.from('guests').update({ table_number: tableNumber }).eq('id', guestId); } catch(e) {}
+  if (!skipRender) { renderSeatingChart(); renderGuests(); }
+}
+
+// ── THE DAY ──
+async function loadTheDay() {
+  try {
+    const { data, error } = await db.from('the_day_details').select('*').eq('user_id', currentUser.id).maybeSingle();
+    if (error) throw error;
+    theDay = data || null;
+  } catch(e) { theDay = theDay || null; }
+  if (!theDay) {
+    theDay = {
+      user_id: currentUser.id, old_item: '', new_item: '', borrowed_item: '', blue_item: '',
+      emergency_kit: [
+        {id:'1',text:'Safety pins',done:false},{id:'2',text:'Stain remover pen',done:false},
+        {id:'3',text:'Bobby pins & hair ties',done:false},{id:'4',text:'Clear nail polish (runs)',done:false},
+        {id:'5',text:'Blister pads / flats to change into',done:false},{id:'6',text:'Deodorant & mints',done:false},
+        {id:'7',text:'Tissues',done:false},{id:'8',text:'Phone charger',done:false},{id:'9',text:'Snacks & water',done:false}
+      ]
+    };
+  }
+  renderTheDay();
+}
+
+function renderTheDay() {
+  if (!theDay) return;
+  const map = { 'tday-old':'old_item', 'tday-new':'new_item', 'tday-borrowed':'borrowed_item', 'tday-blue':'blue_item' };
+  Object.entries(map).forEach(([elId, field]) => {
+    const el = document.getElementById(elId);
+    if (el) el.value = theDay[field] || '';
+  });
+  const list = document.getElementById('emergency-kit-list');
+  if (!list) return;
+  const items = theDay.emergency_kit || [];
+  list.innerHTML = items.length ? items.map(item => `
+    <div class="check-item ${item.done?'done':''}" onclick="toggleEmergencyItem('${item.id}')">
+      <div class="check-box"></div>
+      <div style="flex:1;"><div class="check-text">${item.text}</div></div>
+      <button class="check-del" onclick="event.stopPropagation();deleteEmergencyItem('${item.id}')" title="Delete">🗑</button>
+    </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);">No items yet.</div>';
+}
+
+async function saveTheDay() {
+  theDay.old_item = document.getElementById('tday-old').value.trim();
+  theDay.new_item = document.getElementById('tday-new').value.trim();
+  theDay.borrowed_item = document.getElementById('tday-borrowed').value.trim();
+  theDay.blue_item = document.getElementById('tday-blue').value.trim();
+  await persistTheDay();
+  toast('Saved! 🌸');
+}
+
+function toggleEmergencyItem(id) {
+  const item = (theDay.emergency_kit||[]).find(i => i.id === id);
+  if (!item) return;
+  item.done = !item.done;
+  renderTheDay();
+  persistTheDay();
+}
+
+function deleteEmergencyItem(id) {
+  theDay.emergency_kit = (theDay.emergency_kit||[]).filter(i => i.id !== id);
+  renderTheDay();
+  persistTheDay();
+}
+
+async function addEmergencyItem() {
+  const text = document.getElementById('emergency-item-text').value.trim();
+  if (!text) { toast('Please enter an item.'); return; }
+  theDay.emergency_kit = theDay.emergency_kit || [];
+  theDay.emergency_kit.push({ id: Date.now().toString(), text, done: false });
+  closeModal('modal-add-emergency-item');
+  document.getElementById('emergency-item-text').value = '';
+  renderTheDay();
+  await persistTheDay();
+  toast('Item added!');
+}
+
+async function persistTheDay() {
+  try {
+    await db.from('the_day_details').upsert({
+      user_id: currentUser.id,
+      old_item: theDay.old_item || '', new_item: theDay.new_item || '',
+      borrowed_item: theDay.borrowed_item || '', blue_item: theDay.blue_item || '',
+      emergency_kit: theDay.emergency_kit || []
+    }, { onConflict: 'user_id' });
+  } catch(e) { /* table may not exist yet — data still held in memory for this session */ }
+}
+
+// ── WEDDING TO-DO TIMELINE ──
+const DEFAULT_TODOS = {
+  pre: [
+    'Finalize ceremony music (processional, recessional)',
+    'Finalize ceremony order / readings / vows format',
+    'Confirm officiant script',
+    'Choose first dance song',
+    'Choose parent dance songs',
+    'Give DJ/MC the full run-of-show',
+    'Confirm toast order (best man, MOH, parents)'
+  ],
+  post: [
+    'Send thank you cards',
+    'Preserve / clean wedding dress',
+    'Change name on ID, bank, passport',
+    'Order or finalize photo album',
+    'Leave reviews for vendors',
+    'Return any rentals',
+    'Share photos with wedding party'
+  ]
+};
+
+async function loadTodos() {
+  try {
+    const { data, error } = await db.from('wedding_todos').select('*').eq('user_id', currentUser.id).order('created_at');
+    if (error) throw error;
+    todos = data || [];
+  } catch(e) { todos = todos || []; }
+  if (!todos.length) await seedDefaultTodos();
+  renderTodos();
+}
+
+async function seedDefaultTodos() {
+  const seed = [
+    ...DEFAULT_TODOS.pre.map(title => ({ title, phase: 'pre' })),
+    ...DEFAULT_TODOS.post.map(title => ({ title, phase: 'post' }))
+  ];
+  try {
+    const { data, error } = await db.from('wedding_todos').insert(seed.map(t => ({ ...t, user_id: currentUser.id, done: false }))).select();
+    if (error) throw error;
+    todos = data || [];
+  } catch(e) {
+    todos = seed.map(t => ({ ...t, id: Date.now().toString() + Math.random(), done: false }));
+  }
+}
+
+function renderTodos() {
+  const preEl = document.getElementById('todo-pre-list');
+  const postEl = document.getElementById('todo-post-list');
+  if (!preEl || !postEl) return;
+  const renderList = (phase) => {
+    const items = todos.filter(t => t.phase === phase);
+    return items.length ? items.map(t => `
+      <div class="check-item ${t.done?'done':''}" onclick="toggleTodo('${t.id}')">
+        <div class="check-box"></div>
+        <div style="flex:1;"><div class="check-text">${t.title}</div></div>
+        <button class="check-del" onclick="event.stopPropagation();deleteTodo('${t.id}')" title="Delete">🗑</button>
+      </div>`).join('') : '<div style="font-size:13px;color:var(--text-lt);">No items yet.</div>';
+  };
+  preEl.innerHTML = renderList('pre');
+  postEl.innerHTML = renderList('post');
+}
+
+async function toggleTodo(id) {
+  const t = todos.find(x => x.id === id);
+  if (!t) return;
+  t.done = !t.done;
+  renderTodos();
+  try { await db.from('wedding_todos').update({ done: t.done }).eq('id', id); } catch(e) {}
+}
+
+async function deleteTodo(id) {
+  todos = todos.filter(t => t.id !== id);
+  renderTodos();
+  try { await db.from('wedding_todos').delete().eq('id', id); } catch(e) {}
+}
+
+async function addTodoItem() {
+  const phase = document.getElementById('todo-phase').value;
+  const title = document.getElementById('todo-text').value.trim();
+  if (!title) { toast('Please enter an item.'); return; }
+  const item = { user_id: currentUser.id, phase, title, done: false };
+  try {
+    const { data, error } = await db.from('wedding_todos').insert(item).select().single();
+    if (error) throw error;
+    todos.push(data);
+  } catch(e) {
+    item.id = Date.now().toString();
+    todos.push(item);
+  }
+  closeModal('modal-add-todo');
+  document.getElementById('todo-text').value = '';
+  renderTodos();
+  toast('Added!');
 }
 
 // ── UTILS ──
